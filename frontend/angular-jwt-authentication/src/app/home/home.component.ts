@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import { ImageService } from '../_services/image.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { Image } from '../model/image';
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -8,20 +10,18 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  content: string;
+
+  images: Observable<Image[]>;
   currentUser: any;
 
-  constructor(private userService: UserService, private token: TokenStorageService) { }
+  constructor(private imageService: ImageService, private token: TokenStorageService) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
-    this.userService.getPublicContent().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    this.reload();
+  }
+  
+  reload(){
+    this.images = this.imageService.getListImages();
   }
 }
