@@ -1,0 +1,38 @@
+<div class="container">
+  <header class="jumbotron">
+    <p>{{ content }}</p>
+
+    <div class="container-fliud" *ngIf="currentUser; else loggedOut">
+
+      <div class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+          attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+          [ngStyle]="{ width: progress + '%' }">
+          {{ progress }}
+        </div>
+      </div>
+
+      <div>
+        <label class="btn btn-default">
+          <input type="file"/>
+        </label>
+  
+        <button class="btn btn-success">
+          Upload
+        </button>
+      </div>
+
+      <div class="alert alert-light" role="alert"></div>
+
+      <div class="card">
+        <div class="card-header">List of Files</div>
+        <ul class="list-group list-group-flush">
+        </ul>
+      </div>
+    </div>
+  </header>
+</div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
