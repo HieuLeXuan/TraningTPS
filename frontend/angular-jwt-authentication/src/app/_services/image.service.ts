@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from "rxjs/operators";
 import { Router } from '@angular/router';
 
-const API_URL = 'http://localhost:8080/api/upload/';
+const API_URL = 'http://localhost:8080/api/load/';
 
 @Injectable({
   providedIn: 'root'

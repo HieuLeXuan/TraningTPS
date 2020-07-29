@@ -14,6 +14,6 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin');
+    return this.http.get(API_URL + 'admin', {responseType: "text"});
   }
 }

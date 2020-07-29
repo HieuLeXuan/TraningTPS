@@ -5,7 +5,7 @@ import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http'
 import { TokenStorageService } from '../_services/token-storage.service';
 import { Router } from '@angular/router';
 import { Observable, } from 'rxjs';
-import { tap } from "rxjs/operators";
+import { tap, map } from "rxjs/operators";
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (token != null) {
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
     }
-    return next.handle(authReq)
+    return next.handle(authReq);
   }
 }
 

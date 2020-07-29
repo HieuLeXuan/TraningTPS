@@ -20,7 +20,7 @@ export class BoardAdminComponent implements OnInit {
       data => {
         this.content = data;
       },
-      err => {
+      err => { 
         this.content = JSON.parse(err.error).message;
       }
     );

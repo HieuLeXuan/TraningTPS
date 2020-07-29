@@ -56,6 +56,22 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "qc": {
+              "fileReplacements": [
+                  {
+                      "replace": "src/environments/environment.ts",
+                      "with": "src/environments/environment.qc.ts"
+                  }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                  {
+                      "replace": "src/environments/environment.ts",
+                      "with": "src/environments/environment.dev.ts"
+                  }
+              ]
             }
           }
         },
@@ -67,6 +83,12 @@
           "configurations": {
             "production": {
               "browserTarget": "angular-jwt-authentication:build:production"
+            },
+            "dev": {
+              "browserTarget": "angular-jwt-authentication:build:dev"
+            },
+            "qa": {
+                "browserTarget": "angular-jwt-authentication:build:qc"
             }
           }
         },
