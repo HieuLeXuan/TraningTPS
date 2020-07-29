@@ -1,7 +1,11 @@
 <div class="container">
   <header class="jumbotron">
     <p>{{ content }}</p>
+  </header>
+</div>
 
+<div class="container">
+  <header class="jumbotron">
     <div *ngIf="currentUser; else loggedOut">
       <div class="progress">
         <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuemin="0"

@@ -16,6 +16,17 @@ public class Image {
 	private String name;
 	private String url;
 
+	public Image() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Image(String name, String url) {
+		super();
+		this.name = name;
+		this.url = url;
+	}
+
 	public Integer getId() {
 		return id;
 	}
