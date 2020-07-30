@@ -14,6 +14,6 @@ export class ImageService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getListImages(): Observable<any> {
-    return this.http.get(API_URL + 'all');
+    return this.http.get(API_URL + 'files');
   }
 }
