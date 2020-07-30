@@ -20,22 +20,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.hieulexuan.springjwt.message.ResponseImage;
 import com.hieulexuan.springjwt.message.ResponseMessage;
 import com.hieulexuan.springjwt.models.Image;
+import com.hieulexuan.springjwt.repository.ImageRepository;
 import com.hieulexuan.springjwt.service.FileStorageService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/load")
 public class UploadFileController {
-
-//	@Autowired
-//	ImageRepository imageRepository;
-//
-//	@GetMapping("/all")
-//	public List<Image> allImages() {
-//		List<Image> images = imageRepository.findAll();
-//		return images;
-//	}
-
+	
 	@Autowired
 	FileStorageService storageService;
 
@@ -56,7 +48,7 @@ public class UploadFileController {
 	@GetMapping("/files")
 	public ResponseEntity<List<ResponseImage>> getListFiles() {
 		List<ResponseImage> images = storageService.getAllFiles().map(dbFile -> {
-			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/load/files/")
+			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/")
 					.path(dbFile.getId()).toUriString();
 
 			return new ResponseImage(dbFile.getName(), fileDownloadUri, dbFile.getType(), dbFile.getData().length);

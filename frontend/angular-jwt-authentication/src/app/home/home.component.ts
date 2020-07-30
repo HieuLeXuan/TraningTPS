@@ -3,6 +3,7 @@ import { ImageService } from '../_services/image.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { Image } from '../model/image';
 import { Observable } from "rxjs";
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   images: Observable<Image[]>;
   currentUser: any;
 
-  constructor(private imageService: ImageService, private token: TokenStorageService) { }
+  constructor(private imageService: ImageService, private http: HttpClient, private token: TokenStorageService) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
@@ -23,5 +24,9 @@ export class HomeComponent implements OnInit {
   
   reload(){
     this.images = this.imageService.getListImages();
+  }
+
+  async requestAndEncode(url) {
+    return this.http.get(url).toPromise().then((res: HttpResponse<any>) => btoa(res.body));
   }
 }
