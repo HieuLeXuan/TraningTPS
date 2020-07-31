@@ -8,7 +8,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
@@ -26,8 +26,4 @@ export class HomeComponent implements OnInit {
   reload(){
     this.images = this.imageService.getListImages();
   }
-
-  // async requestAndEncode(url) {
-  //   return this.http.get(url).toPromise().then((res: HttpResponse<any>) => btoa(res.body));
-  // }
 }

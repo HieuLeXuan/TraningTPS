@@ -31,6 +31,7 @@ import com.hieulexuan.springjwt.security.services.UserDetailsServiceImpl;
 		// jsr250Enabled = true,
 		prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
 
@@ -75,10 +76,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.authorizeRequests().antMatchers("/api/auth/**").permitAll()
-			.antMatchers("/api/login/**").permitAll()
-			.antMatchers("/api/upload/**").permitAll()
-			.anyRequest().authenticated();
+			.authorizeRequests()
+				.antMatchers("/api/auth/**").permitAll()
+				.antMatchers("/api/login/**").permitAll()
+				.antMatchers("/api/login/admin").hasRole("ADMIN")
+				.antMatchers("/api/load/upload").hasAnyRole("ADMIN", "USER")
+				.antMatchers("/api/load/files").permitAll()
+				.antMatchers("/api/load/files/**").permitAll()
+				.anyRequest().authenticated();
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}

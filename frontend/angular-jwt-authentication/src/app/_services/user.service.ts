@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from "rxjs/operators";
@@ -15,5 +15,9 @@ export class UserService {
 
   getAdminBoard(): Observable<any> {
     return this.http.get(API_URL + 'admin', {responseType: "text"});
+  }
+
+  getUserBoard(): Observable<any> {
+    return this.http.get(API_URL + 'user', {responseType: "text"});
   }
 }

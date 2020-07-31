@@ -48,7 +48,7 @@ public class UploadFileController {
 	@GetMapping("/files")
 	public ResponseEntity<List<ResponseImage>> getListFiles() {
 		List<ResponseImage> images = storageService.getAllFiles().map(dbImage -> {
-			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/")
+			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/load/files/")
 					.path(dbImage.getId()).toUriString();
 
 			return new ResponseImage(dbImage.getName(), dbImage.getData(), imageDownloadUri, dbImage.getType(), dbImage.getData().length);
