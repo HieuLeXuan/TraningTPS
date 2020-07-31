@@ -2,12 +2,14 @@ package com.hieulexuan.springjwt.message;
 
 public class ResponseImage {
 	private String name;
+	private byte[] data;
 	private String url;
 	private String type;
 	private long size;
 
-	public ResponseImage(String name, String url, String type, long size) {
+	public ResponseImage(String name, byte[] data, String url, String type, long size) {
 		this.name = name;
+		this.data = data;
 		this.url = url;
 		this.type = type;
 		this.size = size;
@@ -23,6 +25,14 @@ public class ResponseImage {
 
 	public String getUrl() {
 		return url;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
 	}
 
 	public void setUrl(String url) {

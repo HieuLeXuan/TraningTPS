@@ -1,5 +1,6 @@
 package com.hieulexuan.springjwt.controllers;
 
+import java.sql.Blob;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,14 +21,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.hieulexuan.springjwt.message.ResponseImage;
 import com.hieulexuan.springjwt.message.ResponseMessage;
 import com.hieulexuan.springjwt.models.Image;
-import com.hieulexuan.springjwt.repository.ImageRepository;
 import com.hieulexuan.springjwt.service.FileStorageService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/load")
 public class UploadFileController {
-	
+
 	@Autowired
 	FileStorageService storageService;
 
@@ -47,11 +47,11 @@ public class UploadFileController {
 
 	@GetMapping("/files")
 	public ResponseEntity<List<ResponseImage>> getListFiles() {
-		List<ResponseImage> images = storageService.getAllFiles().map(dbFile -> {
-			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/")
-					.path(dbFile.getId()).toUriString();
+		List<ResponseImage> images = storageService.getAllFiles().map(dbImage -> {
+			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/")
+					.path(dbImage.getId()).toUriString();
 
-			return new ResponseImage(dbFile.getName(), fileDownloadUri, dbFile.getType(), dbFile.getData().length);
+			return new ResponseImage(dbImage.getName(), dbImage.getData(), imageDownloadUri, dbImage.getType(), dbImage.getData().length);
 		}).collect(Collectors.toList());
 
 		return ResponseEntity.status(HttpStatus.OK).body(images);

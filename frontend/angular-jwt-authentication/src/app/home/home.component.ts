@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   images: Observable<Image[]>;
   currentUser: any;
+  base64textString: string;
 
   constructor(private imageService: ImageService, private http: HttpClient, private token: TokenStorageService) { }
 
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit {
     this.images = this.imageService.getListImages();
   }
 
-  async requestAndEncode(url) {
-    return this.http.get(url).toPromise().then((res: HttpResponse<any>) => btoa(res.body));
-  }
+  // async requestAndEncode(url) {
+  //   return this.http.get(url).toPromise().then((res: HttpResponse<any>) => btoa(res.body));
+  // }
 }
