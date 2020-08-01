@@ -1,5 +1,9 @@
-<div class="container pt-5 pb-4 py-md-6 py-lg-7">
+<div class="wrapper" *ngFor="let image of images | async">
+  <img class="card-img"
+            src="data:{{image.type}};base64,{{image.data}}" alt="Business Consulting">
+</div>
 
+<!-- <div class="container pt-5 pb-4 py-md-6 py-lg-7">
   <div class="text-center mb-5 pt-3 pt-lg-4">
     <h2 class="h1 mb-4">TPS<span class="bg-faded-primary rounded text-primary px-3 py-2">Images</span></h2>
     <p class="text-muted">Choose images if you want to dowload !!!</p>
@@ -14,8 +18,8 @@
       </a>
     </div>
   </div>
-</div>
+</div> -->
 
-<ng-template #loggedOut>
-  Please login.
-</ng-template>
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>
