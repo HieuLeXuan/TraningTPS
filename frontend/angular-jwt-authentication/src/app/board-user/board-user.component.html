@@ -1,0 +1,38 @@
+<div class="container">
+  <header class="jumbotron">
+    <p>{{ content }}</p>
+  </header>
+</div>
+
+<div class="container">
+  <header class="jumbotron">
+    <div *ngIf="currentUser; else loggedOut">
+      <div *ngIf="!currenFile" class="progress">
+        <div 
+          class="progress-bar progress-bar-info progress-bar-striped" 
+          data-label="Loading..." 
+          role="progressbar"
+          attr.aria-valuenow="{{ progress }}" 
+          aria-valuemin="50" 
+          aria-valuemax="100"
+          [ngStyle]="{ width: progress + '%' }"
+        >
+          {{ progress }}%
+        </div>
+      </div>
+
+      <label class="btn btn-default">
+        <input type="file" accept="image/*" (change)="selectFile($event)" multiple/>
+      </label>
+      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+        Upload
+      </button>
+      <div class="alert alert-light" role="alert">{{ message }}</div>
+
+    </div>
+  </header>
+</div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
