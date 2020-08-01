@@ -21,13 +21,13 @@ export class BoardAdminComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
-    this.userService.getAdminBoard().subscribe(
-      (data) => {
-        this.content = data;
-      },
-      (err) => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    // this.userService.getAdminBoard().subscribe(
+    //   (data) => {
+    //     this.content = data;
+    //   },
+    //   (err) => {
+    //     this.content = JSON.parse(err.error).message;
+    //   }
+    // );
   }
 }

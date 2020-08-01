@@ -27,14 +27,14 @@ export class BoardUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    this.userService.getUserBoard().subscribe(
-      (data) => {
-        this.content = data;
-      },
-      (err) => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    // this.userService.getUserBoard().subscribe(
+    //   (data) => {
+    //     this.content = data;
+    //   },
+    //   (err) => {
+    //     this.content = JSON.parse(err.error).message;
+    //   }
+    // );
   }
 
   selectFile(event) {
@@ -53,8 +53,8 @@ export class BoardUserComponent implements OnInit {
           this.progress = Math.round((100 * event.loaded) / event.total);
           console.log(Math.round((100 * event.loaded) / event.total));
         } else if (event instanceof HttpResponse) {
-          // this.message = event.body.message;
-          this.message = "Upload images success!!!";
+          this.message = event.body.message;
+          // this.message = "Upload images success!!!";
         }
       },
       (err) => {
