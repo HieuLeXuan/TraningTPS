@@ -33,10 +33,10 @@ public class UploadFileController {
 
 	@PostMapping("/upload")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
+	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, String description) {
 		String message = "";
 		try {
-			storageService.store(file);
+			storageService.store(file, description);
 
 			message = "Uploaded the file successfully: " + file.getOriginalFilename();
 			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));

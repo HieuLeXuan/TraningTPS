@@ -1,9 +1,17 @@
 package com.hieulexuan.springjwt.models;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -18,6 +26,8 @@ public class Image {
 	private String id;
 	private String name;
 	private String type;
+	private String description;
+	private Date createDate;
 
 	@Lob
 	private byte[] data;
@@ -27,11 +37,13 @@ public class Image {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Image(String name, String type, byte[] data) {
+	public Image(String name, String type, byte[] data, String descrition, Date createDate) {
 		super();
 		this.name = name;
 		this.type = type;
 		this.data = data;
+		this.description = descrition;
+		this.createDate = createDate;
 	}
 
 	public String getId() {
@@ -60,6 +72,26 @@ public class Image {
 
 	public void setData(byte[] data) {
 		this.data = data;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

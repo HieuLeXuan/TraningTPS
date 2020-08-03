@@ -11,13 +11,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./board-user.component.css'],
 })
 export class BoardUserComponent implements OnInit {
-  content = '';
   currentUser: any;
 
   selectedFiles: FileList;
   currentFile: File;
   progress = 0;
   message = '';
+  
+  descript: string;
 
   constructor(
     private userService: UserService,
@@ -27,14 +28,6 @@ export class BoardUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    // this.userService.getUserBoard().subscribe(
-    //   (data) => {
-    //     this.content = data;
-    //   },
-    //   (err) => {
-    //     this.content = JSON.parse(err.error).message;
-    //   }
-    // );
   }
 
   selectFile(event) {
@@ -47,14 +40,13 @@ export class BoardUserComponent implements OnInit {
     this.progress = 0;
 
     this.currentFile = this.selectedFiles.item(0);
-    this.imageService.upload(this.currentFile).subscribe(
+    this.imageService.upload(this.currentFile, this.descript).subscribe(
       (event) => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round((100 * event.loaded) / event.total);
           console.log(Math.round((100 * event.loaded) / event.total));
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
-          // this.message = "Upload images success!!!";
         }
       },
       (err) => {
@@ -64,5 +56,8 @@ export class BoardUserComponent implements OnInit {
       }
     );
     this.selectedFiles = undefined;
+  }
+  description(currentFile: File, description: any) {
+    throw new Error("Method not implemented.");
   }
 }

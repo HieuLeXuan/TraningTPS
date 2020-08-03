@@ -19,20 +19,44 @@
 </header>
 
 <div class="container pt-5 pb-4 py-md-6 py-lg-7">
+  <a
+    href="/user"
+    class="btn btn-info"
+    role="button"
+    aria-pressed="true"
+    style="
+      margin-bottom: 10px;
+      margin-left: 985px;
+      background-color: rgba(61, 204, 149, 0.767);
+    "
+    ><i class="fas fa-plus fa-3x" style="font-size: small;"></i> Image</a
+  >
+
   <div class="row">
-    <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3" *ngFor="let image of images | async">
+    <div
+      class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"
+      *ngFor="let image of images | async"
+    >
       <div class="portfolio-item">
-      <a class="portfolio-link" href="#">
-        <div class="portfolio-hover">
-          <a class="portfolio-link" href="#">
-          <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-          </a>
-          <a class="portfolio-link" href="#">
-          <div class="portfolio-hover-content"><i class="fas fa-download fa-3x"></i></div>
-          </a>
-        </div>
-          <img class="img-thumbnail" src="{{image.url}}" alt="Business Consulting">
-      </a>
+        <a class="portfolio-link">
+          <div class="portfolio-hover">
+            <a class="portfolio-link" href="#">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-eye fa-3x"></i>
+              </div>
+            </a>
+            <a class="portfolio-link" href="#">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-download fa-3x"></i>
+              </div>
+            </a>
+          </div>
+          <img
+            class="img-thumbnail"
+            src="{{ image.url }}"
+            alt="Business Consulting"
+          />
+        </a>
       </div>
     </div>
   </div>
@@ -41,5 +65,4 @@
 <ng-template #loggedOut>
   Please login.
 </ng-template>
-
 

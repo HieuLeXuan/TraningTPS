@@ -17,10 +17,11 @@ public class FileStorageService {
 	@Autowired
 	private ImageRepository imageRepository;
 
-	public Image store(MultipartFile file) throws IOException {
+	public Image store(MultipartFile file, String description) throws IOException {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		Image image = new Image(fileName, file.getContentType(), file.getBytes());
-
+		java.util.Date date = new java.util.Date();
+		Image image = new Image(fileName, file.getContentType(), file.getBytes(), description, date);
+		
 		return imageRepository.save(image);
 	}
 

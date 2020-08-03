@@ -1,9 +1,28 @@
-<!-- <div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
-</div>
-
-<ng-template #loggedOut>
-  Please login.
-</ng-template> -->
+<!-- <div class="panel panel-primary" style="margin-top: 130px;">
+  <div class="container">
+    <div class="panel-heading">
+      <h2>Images List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>url</th>
+            <th>name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let image of images | async">
+            <td>{{images.id}}</td>
+            <td>{{images.url}}</td>
+            <td>{{images.name}}</td>
+            <td><button class="btn btn-danger">Delete</button>
+              <button class="btn btn-info" style="margin-left: 10px">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->

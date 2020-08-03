@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../_services/image.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { Image } from '../model/image';
-import { Observable } from "rxjs";
+import { Observable, from } from "rxjs";
 import { HttpClient, HttpResponse } from '@angular/common/http';
 
 @Component({
