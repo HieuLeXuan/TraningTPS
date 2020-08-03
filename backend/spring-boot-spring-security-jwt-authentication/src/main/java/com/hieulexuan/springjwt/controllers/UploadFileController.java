@@ -1,6 +1,5 @@
 package com.hieulexuan.springjwt.controllers;
 
-import java.sql.Blob;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +32,7 @@ public class UploadFileController {
 	FileStorageService storageService;
 
 	@PostMapping("/upload")
+	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
 		String message = "";
 		try {
@@ -51,7 +52,7 @@ public class UploadFileController {
 			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/load/files/")
 					.path(dbImage.getId()).toUriString();
 
-			return new ResponseImage(dbImage.getName(), dbImage.getData(), imageDownloadUri, dbImage.getType(), dbImage.getData().length);
+			return new ResponseImage(dbImage.getName(), imageDownloadUri, dbImage.getType(), dbImage.getData().length);
 		}).collect(Collectors.toList());
 
 		return ResponseEntity.status(HttpStatus.OK).body(images);

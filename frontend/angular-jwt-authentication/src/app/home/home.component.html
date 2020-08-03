@@ -1,17 +1,39 @@
-<div class="container pt-5 pb-4 py-md-6 py-lg-7">
-
-  <div class="text-center mb-5 pt-3 pt-lg-4">
-    <h2 class="h1 mb-4">TPS<span class="bg-faded-primary rounded text-primary px-3 py-2">Images</span></h2>
-    <p class="text-muted">Choose images if you want to dowload !!!</p>
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+  <div class="container d-flex align-items-center flex-column">
+    <!-- Masthead Avatar Image-->
+    <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="" />
+    <!-- Masthead Heading-->
+    <h1 class="masthead-heading text-uppercase mb-0">Traning TPS</h1>
+    <!-- Icon Divider-->
+    <div class="divider-custom divider-light">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+    <!-- Masthead Subheading-->
+    <p class="masthead-subheading font-weight-light mb-0">
+      Graphic Artist - Web Designer - Illustrator
+    </p>
   </div>
+</header>
+
+<div class="container pt-5 pb-4 py-md-6 py-lg-7">
   <div class="row">
     <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3" *ngFor="let image of images | async">
-      <a class="d-block nav-heading text-center" href="{{image.url}}}">
-        <div class="card card-hover border-0 box-shadow-lg mb-4"><img class="card-img"
-            src="data:{{image.type}};base64,{{image.data}}" alt="Business Consulting">
+      <div class="portfolio-item">
+      <a class="portfolio-link" href="#">
+        <div class="portfolio-hover">
+          <a class="portfolio-link" href="#">
+          <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+          </a>
+          <a class="portfolio-link" href="#">
+          <div class="portfolio-hover-content"><i class="fas fa-download fa-3x"></i></div>
+          </a>
         </div>
-        <h3 class="h5 nav-heading-title mb-0">{{image.name}}</h3>
+          <img class="img-thumbnail" src="{{image.url}}" alt="Business Consulting">
       </a>
+      </div>
     </div>
   </div>
 </div>
@@ -19,3 +41,5 @@
 <ng-template #loggedOut>
   Please login.
 </ng-template>
+
+
