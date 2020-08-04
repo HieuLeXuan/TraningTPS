@@ -12,6 +12,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { BoardUserComponent } from './board-user/board-user.component';
+import { DetailImgComponent } from './detail-img/detail-img.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
     ProfileComponent,
     RegisterComponent,
     BoardUserComponent,
+    DetailImgComponent,
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
   providers: [authInterceptorProviders],

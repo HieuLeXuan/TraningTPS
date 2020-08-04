@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ImageService } from '../_services/image.service';
-import { TokenStorageService } from '../_services/token-storage.service';
 import { Image } from '../model/image';
-import { Observable } from "rxjs";
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-detail-img',
+  templateUrl: './detail-img.component.html',
+  styleUrls: ['./detail-img.component.css']
 })
-export class HomeComponent implements OnInit {
+export class DetailImgComponent implements OnInit {
 
   images: Observable<Image[]>;
   currentUser: any;
