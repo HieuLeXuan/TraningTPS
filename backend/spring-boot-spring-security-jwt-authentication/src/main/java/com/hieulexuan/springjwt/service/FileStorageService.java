@@ -41,12 +41,12 @@ public class FileStorageService {
 	}
 
 	//
-	public Image store(MultipartFile file, String description, Long user_id) throws IOException {
+	public Image store(MultipartFile file, String description, String username) throws IOException {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		java.util.Date date = new java.util.Date();
 		
-		User user = userRepository.findById(user_id)
-				.orElseThrow(() -> new UserNotFoundException(user_id));
+		User user = userRepository.findByUsername(username)
+				.orElseThrow(() -> new UserNotFoundException(username));
 		
 		Image image = new Image(fileName, file.getContentType(), file.getBytes(), description, date, root.toString(), user);
 		

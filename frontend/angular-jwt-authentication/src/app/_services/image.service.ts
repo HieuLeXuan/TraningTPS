@@ -11,12 +11,11 @@ export class ImageService {
 
   constructor(private http: HttpClient) { }
 
-  upload(file: File, description: string, id: string): Observable<HttpEvent<any>> {
+  upload(file: File, description: string): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
 
     formData.append('file', file);
-    formData.append('description', description)
-    formData.append('id', id);
+    formData.append('description', description);
 
     const req = new HttpRequest('POST', API_URL + 'upload', formData, {
       reportProgress: true,

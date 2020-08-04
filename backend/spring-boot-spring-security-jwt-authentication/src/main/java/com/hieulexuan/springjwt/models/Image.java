@@ -20,14 +20,14 @@ public class Image {
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
-	private String name;
-	private String type;
-	private String description;
-	private Date createDate;
 
 	@Lob
 	private byte[] data;
 
+	private String name;
+	private String type;
+	private String description;
+	private Date createDate;
 	private String path;
 
 	@ManyToOne

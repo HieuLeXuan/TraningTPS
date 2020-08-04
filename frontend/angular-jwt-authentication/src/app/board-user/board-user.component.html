@@ -9,7 +9,7 @@
     <div *ngIf="currentUser; else loggedOut">
      <div>
         <!-- About Section Heading-->
-      <h2 class="page-section-heading text-center text-uppercase text-success">Upload Images</h2>
+      <h2 class="page-section-heading text-center text-uppercase" style="color: rgb(26, 145, 71);">Upload Images</h2>
       <!-- Icon Divider-->
       <div class="divider-custom divider" style="margin-bottom: 50px;">
         <div class="divider-custom-line"></div>
@@ -51,7 +51,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-sm">Author Img</span>
       </div>
-      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{id}}" required [(ngModel)]="id" disabled>
+      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{username}}" disabled>
     </div>
   </header>
 </div>
