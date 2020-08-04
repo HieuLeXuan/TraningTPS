@@ -1,8 +1,6 @@
 package com.hieulexuan.springjwt.models;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -13,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -44,6 +43,9 @@ public class User {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	private Set<Image> images;
 
 	public User() {
 	}
@@ -93,4 +95,5 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+	
 }

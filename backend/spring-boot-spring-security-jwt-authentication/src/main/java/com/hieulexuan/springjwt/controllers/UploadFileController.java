@@ -1,7 +1,10 @@
 package com.hieulexuan.springjwt.controllers;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.swing.RepaintManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -33,10 +36,11 @@ public class UploadFileController {
 
 	@PostMapping("/upload")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, String description) {
+	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, String description, Long user_id) {
+//		String username = principal.getName();		
 		String message = "";
 		try {
-			storageService.store(file, description);
+			storageService.store(file, description, user_id);
 
 			message = "Uploaded the file successfully: " + file.getOriginalFilename();
 			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));

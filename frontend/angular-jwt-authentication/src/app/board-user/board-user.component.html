@@ -4,17 +4,19 @@
   </header>
 </div> -->
 
-<div class="container" style="margin-top: 140px; height: 450px;">
+<div class="container" style="margin-top: 140px; margin-bottom: 80px; height: 450px;">
   <header class="jumbotron">
     <div *ngIf="currentUser; else loggedOut">
-
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Description</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="description" required [(ngModel)]="descript">
+     <div>
+        <!-- About Section Heading-->
+      <h2 class="page-section-heading text-center text-uppercase text-success">Upload Images</h2>
+      <!-- Icon Divider-->
+      <div class="divider-custom divider" style="margin-bottom: 50px;">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
       </div>
-
+     </div>
       <div *ngIf="!currenFile" class="progress">
         <div 
           class="progress-bar progress-bar-info progress-bar-striped" 
@@ -37,9 +39,22 @@
       </button>
       <div class="alert alert-light" role="alert">{{ message }}</div>
     </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Description</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required [(ngModel)]="descript">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Author Img</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{id}}" required [(ngModel)]="id" disabled>
+    </div>
   </header>
 </div>
-
 <ng-template #loggedOut>
   Please login.
 </ng-template>

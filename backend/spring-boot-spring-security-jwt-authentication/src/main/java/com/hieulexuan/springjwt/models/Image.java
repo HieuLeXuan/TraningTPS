@@ -1,17 +1,13 @@
 package com.hieulexuan.springjwt.models;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -32,18 +28,26 @@ public class Image {
 	@Lob
 	private byte[] data;
 
+	private String path;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
 	public Image() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Image(String name, String type, byte[] data, String descrition, Date createDate) {
+	public Image(String name, String type, byte[] data, String descrition, Date createDate, String path, User user) {
 		super();
 		this.name = name;
 		this.type = type;
 		this.data = data;
 		this.description = descrition;
 		this.createDate = createDate;
+		this.path = path;
+		this.user = user;
 	}
 
 	public String getId() {
@@ -92,6 +96,22 @@ public class Image {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

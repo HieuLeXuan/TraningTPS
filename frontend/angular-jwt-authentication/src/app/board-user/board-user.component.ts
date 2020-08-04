@@ -11,23 +11,30 @@ import { Observable } from 'rxjs';
   styleUrls: ['./board-user.component.css'],
 })
 export class BoardUserComponent implements OnInit {
-  currentUser: any;
 
+  currentUser: any;
   selectedFiles: FileList;
   currentFile: File;
   progress = 0;
   message = '';
   
+  isLoggedIn = false;
   descript: string;
+  id: string;
 
   constructor(
-    private userService: UserService,
     private token: TokenStorageService,
     private imageService: ImageService
   ) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
+    this.isLoggedIn = !!this.token.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.token.getUser();
+      this.id = user.id;
+    }
   }
 
   selectFile(event) {
@@ -40,7 +47,7 @@ export class BoardUserComponent implements OnInit {
     this.progress = 0;
 
     this.currentFile = this.selectedFiles.item(0);
-    this.imageService.upload(this.currentFile, this.descript).subscribe(
+    this.imageService.upload(this.currentFile, this.descript, this.id).subscribe(
       (event) => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round((100 * event.loaded) / event.total);
