@@ -41,14 +41,9 @@
 <div class="container" style="margin-top: 140px;">
   <header class="jumbotron" *ngIf="currentUser; else loggedOut">
     <div class="row">
-      <div class="col-sm-3" style="text-align: center;">
-        <h1>{{ currentUser.username }}</h1>
-      </div>
-    </div>
-
-    <div class="row">
       <div class="col-sm-3">
         <div class="text-center">
+          <h1>{{ currentUser.username }}</h1>
           <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded-circle img-thumbnail"
             alt="avatar" />
           <h6>Upload a different photo...</h6>
