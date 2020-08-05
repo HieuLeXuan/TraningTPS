@@ -1,15 +1,11 @@
-<!-- <div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
-</div> -->
-
-<div class="container" style="margin-top: 140px; margin-bottom: 80px; height: 450px;">
+<div class="container" style="margin-top: 140px; margin-bottom: 80px;">
   <header class="jumbotron">
     <div *ngIf="currentUser; else loggedOut">
       <div>
         <!-- About Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase" style="color: rgb(26, 145, 71);">Upload Images</h2>
+        <h2 class="page-section-heading text-center text-uppercase" style="color: rgb(26, 145, 71);">
+          Upload Images
+        </h2>
         <!-- Icon Divider-->
         <div class="divider-custom divider" style="margin-bottom: 50px;">
           <div class="divider-custom-line"></div>
@@ -17,7 +13,7 @@
           <div class="divider-custom-line"></div>
         </div>
       </div>
-      <div *ngIf="!currenFile" class="progress">
+      <div *ngIf="!currenFile" class="progress" style="margin-bottom: 20px;">
         <div class="progress-bar progress-bar-info progress-bar-striped" data-label="Loading..." role="progressbar"
           attr.aria-valuenow="{{ progress }}" aria-valuemin="50" aria-valuemax="100"
           [ngStyle]="{ width: progress + '%' }">
@@ -25,12 +21,13 @@
         </div>
       </div>
 
-      <label class="btn btn-default">
-        <input type="file" accept="image/*" (change)="selectFile($event)" multiple />
-      </label>
-      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
-        Upload
-      </button>
+      <div class="input-group input-group-sm mb-3">
+        <input type="file" accept="image/*" (change)="selectFile($event)" multiple/><br/>
+        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+          Upload
+        </button>
+      </div>
+
       <div class="alert alert-light" role="alert">{{ message }}</div>
 
       <div class="input-group input-group-sm mb-3">
@@ -38,7 +35,8 @@
           <span class="input-group-text" id="inputGroup-sizing-sm">Description</span>
         </div>
         <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required
-          [(ngModel)]="descript">
+          [(ngModel)]="descript"/>
+
       </div>
 
       <div class="input-group input-group-sm mb-3">
@@ -46,12 +44,12 @@
           <span class="input-group-text" id="inputGroup-sizing-sm">Author Img</span>
         </div>
         <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-          value="{{username}}" disabled>
+          value="{{ username }}" disabled />
       </div>
-
     </div>
   </header>
 </div>
+
 <ng-template #loggedOut>
   Please login.
 </ng-template>

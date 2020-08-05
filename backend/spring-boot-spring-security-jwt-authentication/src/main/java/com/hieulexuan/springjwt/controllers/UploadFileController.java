@@ -38,7 +38,6 @@ public class UploadFileController {
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam String description, Principal principal) {
 		String username = principal.getName();		
-		System.out.println(description);
 		String message = "";
 		try {
 			storageService.store(file, description, username);
@@ -57,7 +56,7 @@ public class UploadFileController {
 			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/load/files/")
 					.path(dbImage.getId()).toUriString();
 
-			return new ResponseImage(dbImage.getName(), imageDownloadUri, dbImage.getType(), dbImage.getData().length);
+			return new ResponseImage(dbImage.getName(), imageDownloadUri, dbImage.getDescription() ,dbImage.getType(), dbImage.getData().length);
 		}).collect(Collectors.toList());
 
 		return ResponseEntity.status(HttpStatus.OK).body(images);

@@ -4,13 +4,15 @@ public class ResponseImage {
 	private String name;
 //	private byte[] data;
 	private String url;
+	private String description;
 	private String type;
 	private long size;
 
-	public ResponseImage(String name, String url, String type, long size) {
+	public ResponseImage(String name, String url, String description, String type, long size) {
 		this.name = name;
 //		this.data = data;
 		this.url = url;
+		this.description = description;
 		this.type = type;
 		this.size = size;
 	}
@@ -37,6 +39,14 @@ public class ResponseImage {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getType() {

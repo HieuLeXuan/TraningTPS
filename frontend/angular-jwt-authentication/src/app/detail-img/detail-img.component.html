@@ -1,16 +1,19 @@
 <div class="container pt-5 pb-4 py-md-6 py-lg-7" style="margin-top: 100px;">
   <div class="row">
-    <div class="col-lg-8 col-sm-6 mb-grid-gutter pb-3" *ngFor="let image of images | async">
+    <div class="col-lg-8 col-sm-6 pb-3" *ngFor="let image of images | async">
         <img class="img-thumbnail" src="{{ image.url }}" alt="Business Consulting" />
+        <p>{{ image.url }}</p>
+        <p>{{ image.description }}</p>
+        
     </div>
-    <div class="p-5 col-lg-4 col-sm-6 mb-grid-gutter pb-3" *ngFor="let image of images | async">
-        <h1>Name</h1>
-        <p>Type:</p>
-        <p>Size:</p>
+    <div id="1" class="p-4 col-lg-4 col-sm-6 pb-3" *ngFor="let image of images | async">
+        <h2>{{image.name}}</h2>
+        <p>Type: {{image.type}}</p>
+        <p>Size: {{image.size}}</p>
 
-        <div class="p-3">
+        <div>
             <button type="button" class="btn btn-secondary"><i class="fas fa-download fa-3x" style="font-size: small;"></i>  Download</button>
-            <button type="button" class="btn btn-secondary" style="margin-left: 30px;"><i class="fas fa-edit fa-3x" style="font-size: small;"></i>  Edit</button>
+            <!-- <button type="button" class="btn btn-secondary" style="margin-left: 30px;"><i class="fas fa-edit fa-3x" style="font-size: small;"></i>  Edit</button> -->
         </div>
 
   </div>

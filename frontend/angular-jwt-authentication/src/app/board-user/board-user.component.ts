@@ -4,7 +4,6 @@ import { TokenStorageService } from '../_services/token-storage.service';
 import { ImageService } from '../_services/image.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board-user',
@@ -26,7 +25,7 @@ export class BoardUserComponent implements OnInit {
 
   constructor(
     private token: TokenStorageService,
-    private imageService: ImageService,
+    private imageService: ImageService
   ) { }
 
   ngOnInit(): void {
