@@ -4,8 +4,6 @@ import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.swing.RepaintManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,8 +34,9 @@ public class UploadFileController {
 
 	@PostMapping("/upload")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam String description, Principal principal) {
-		String username = principal.getName();		
+	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file,
+			@RequestParam String description, Principal principal) {
+		String username = principal.getName();
 		String message = "";
 		try {
 			storageService.store(file, description, username);
@@ -56,7 +55,8 @@ public class UploadFileController {
 			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/load/files/")
 					.path(dbImage.getId()).toUriString();
 
-			return new ResponseImage(dbImage.getName(), imageDownloadUri, dbImage.getDescription() ,dbImage.getType(), dbImage.getData().length);
+			return new ResponseImage(dbImage.getName(), imageDownloadUri, dbImage.getDescription(), dbImage.getType(),
+					dbImage.getData().length);
 		}).collect(Collectors.toList());
 
 		return ResponseEntity.status(HttpStatus.OK).body(images);
