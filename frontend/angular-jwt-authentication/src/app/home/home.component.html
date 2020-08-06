@@ -19,30 +19,20 @@
 </header>
 
 <div class="container pt-5 pb-4 py-md-6 py-lg-7">
-  <a
-    id="button"
-    href="/user"
-    class="btn btn-info"
-    role="button"
-    aria-pressed="true"
-    style="
+  <a id="button" href="/user" class="btn btn-info" role="button" aria-pressed="true" style="
       margin-bottom: 10px;
       right: 0px;
       background-color: rgba(61, 204, 149, 0.767);
-    "
-    ><i class="fas fa-plus fa-3x" style="font-size: small;"></i> Image</a
-  >
+    "><i class="fas fa-plus fa-3x" style="font-size: small;"></i> Image</a>
 
   <div class="row">
-    <div
-      class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"
-      *ngFor="let image of images | async"
-    >
+    <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3" *ngFor="let image of images | async"
+      [class.selected]="image === selectedImage" (click)="onSelect(image)">
       <div class="portfolio-item">
         <a class="portfolio-link">
           <div class="portfolio-hover">
-            <a class="portfolio-link" href="/detailImage">
-              <div class="portfolio-hover-content">
+            <a class="portfolio-link" (click)="basicModal.show()">
+              <div class="portfolio-hover-content"> 
                 <i class="fas fa-eye fa-3x"></i>
               </div>
             </a>
@@ -52,11 +42,7 @@
               </div>
             </a>
           </div>
-          <img
-            class="img-thumbnail"
-            src="{{ image.url }}"
-            alt="Business Consulting"
-          />
+          <img class="img-thumbnail" src="{{ image.url }}" alt="Business Consulting" />
         </a>
       </div>
     </div>
@@ -67,3 +53,14 @@
   Please login.
 </ng-template>
 
+<app-detail-img [image]="selectedImage"></app-detail-img>
+
+<!-- <div mdbModal #basicModal="mdbModal" class="modal fade right" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fluid" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-detail-img [image]="selectedImage"></app-detail-img>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -11,19 +11,19 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item mx-0 mx-lg-1" *ngIf="showAdminBoard">
-          <a class="nav-link" routerLink="admin" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+          <a routerLink="admin" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
             href="/admin">Admin Board</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1" *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="login" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+          <a routerLink="login" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
             href="/login">Login</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="profile" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+          <a routerLink="profile" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
             href="/profile">Hi, {{ username }}</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1" *ngIf="isLoggedIn">
-          <a class="nav-link" (click)="logout()" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"><i
+          <a (click)="logout()" routerLink="home" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"><i
               class="fas fa-sign-out-alt fa-3x" style="font-size: large;"></i></a>
         </li>
       </ul>

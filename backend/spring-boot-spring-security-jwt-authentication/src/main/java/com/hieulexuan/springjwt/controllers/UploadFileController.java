@@ -2,6 +2,7 @@ package com.hieulexuan.springjwt.controllers;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +25,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.hieulexuan.springjwt.message.ResponseImage;
 import com.hieulexuan.springjwt.message.ResponseMessage;
 import com.hieulexuan.springjwt.models.Image;
+import com.hieulexuan.springjwt.models.User;
+import com.hieulexuan.springjwt.repository.UserRepository;
 import com.hieulexuan.springjwt.service.FileStorageService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -31,6 +36,9 @@ public class UploadFileController {
 
 	@Autowired
 	FileStorageService storageService;
+
+	@Autowired
+	UserRepository userRepository;
 
 	@PostMapping("/upload")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
@@ -69,6 +77,27 @@ public class UploadFileController {
 		return ResponseEntity.ok()
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
 				.body(image.getData());
+	}
+
+//	https://medium.com/velacorpblog/l%C3%A0m-quen-v%C3%A0-x%C3%A2y-d%E1%BB%B1ng-restfull-api-crud-%C4%91%C6%A1n-gi%E1%BA%A3n-v%E1%BB%9Bi-spring-boot-5cb812245d2b
+	@PutMapping("user/{id}")
+	public ResponseEntity<User> updateProduct(@PathVariable("id") Long id, @RequestBody User user) {
+		Optional<User> currentUser = userRepository.findById(id);
+		if (!currentUser.isPresent()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		currentUser.get().setUsername(user.getUsername());
+		currentUser.get().setEmail(user.getEmail());
+//		currentUser.get().setPassword(user.getPassword());
+		currentUser.get().setFirstname(user.getFirstname());
+		currentUser.get().setLastname(user.getLastname());
+		currentUser.get().setData(user.getData());
+//		currentUser.get().setDatatype(user.getData());
+		currentUser.get().setPhone(user.getPhone());
+		currentUser.get().setLocation(user.getLocation());
+
+		userRepository.save(currentUser.get());
+		return new ResponseEntity<>(currentUser.get(), HttpStatus.OK);
 	}
 
 }

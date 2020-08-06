@@ -7,12 +7,14 @@ import { Observable } from "rxjs";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['../../assets/css/styles.css']
 })
 export class HomeComponent implements OnInit {
 
-  images: Observable<Image[]>;
   currentUser: any;
+
+  images: Observable<Image[]>;
+  selectedImage: Image;
 
   constructor(private imageService: ImageService, private token: TokenStorageService) { }
 
@@ -23,5 +25,9 @@ export class HomeComponent implements OnInit {
   
   reload(){
     this.images = this.imageService.getListImages();
+  }
+
+  onSelect(image: Image):void {
+    this.selectedImage = image;
   }
 }

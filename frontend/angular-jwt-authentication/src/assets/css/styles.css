@@ -10259,3 +10259,51 @@ form .row:first-child .floating-label-form-group {
 .copyright {
   background-color: #1a252f;
 }
+
+
+.portfolio-item {
+  max-width: 33.3rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.portfolio-item .portfolio-link {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+.portfolio-item .portfolio-link .portfolio-hover {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(187, 191, 194, 0.712);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity ease-in-out 0.25s;
+}
+.portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content {
+  font-size: 1.25rem;
+  color: white;
+  padding-bottom: 0;
+}
+.portfolio-item .portfolio-link:hover .portfolio-hover {
+  opacity: 1;
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+ #button{
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+  .container {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+label{
+margin-top: 20px;
+}

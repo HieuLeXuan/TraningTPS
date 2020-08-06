@@ -5,7 +5,7 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['../assets/css/styles.css']
 })
 export class AppComponent implements OnInit {
   private roles: string[];

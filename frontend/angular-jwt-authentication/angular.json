@@ -24,10 +24,19 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/animate.css/animate.css",
+              "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "./node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "./node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "./node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
               "src/styles.css"
             ],
             "scripts": [
-              "../angular-jwt-authentication/node_modules/jquery/dist/jquery.min.js"
+              "../angular-jwt-authentication/node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/chart.js/dist/Chart.js",
+              "./node_modules/hammerjs/hammer.min.js"
             ]
           },
           "configurations": {
@@ -61,18 +70,18 @@
             },
             "qc": {
               "fileReplacements": [
-                  {
-                      "replace": "src/environments/environment.ts",
-                      "with": "src/environments/environment.qc.ts"
-                  }
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qc.ts"
+                }
               ]
             },
             "dev": {
               "fileReplacements": [
-                  {
-                      "replace": "src/environments/environment.ts",
-                      "with": "src/environments/environment.dev.ts"
-                  }
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
               ]
             }
           }
@@ -90,7 +99,7 @@
               "browserTarget": "angular-jwt-authentication:build:dev"
             },
             "qa": {
-                "browserTarget": "angular-jwt-authentication:build:qc"
+              "browserTarget": "angular-jwt-authentication:build:qc"
             }
           }
         },

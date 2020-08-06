@@ -11,7 +11,6 @@ import { DetailImgComponent } from './detail-img/detail-img.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'detailImage', component: DetailImgComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },

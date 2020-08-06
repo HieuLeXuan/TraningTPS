@@ -1,20 +1,16 @@
 <div class="container pt-5 pb-4 py-md-6 py-lg-7" style="margin-top: 100px;">
-  <div class="row">
-    <div class="col-lg-8 col-sm-6 pb-3" *ngFor="let image of images | async">
-        <img class="img-thumbnail" src="{{ image.url }}" alt="Business Consulting" />
-        <p>{{ image.url }}</p>
-        <p>{{ image.description }}</p>
-        
+  <div class="row" *ngIf="image">
+    <div class="col-lg-8 col-sm-6 pb-3">
+      <img class="img-thumbnail" src="{{image.url}}" alt="Business Consulting" />
     </div>
-    <div id="1" class="p-4 col-lg-4 col-sm-6 pb-3" *ngFor="let image of images | async">
-        <h2>{{image.name}}</h2>
-        <p>Type: {{image.type}}</p>
-        <p>Size: {{image.size}}</p>
+    <div class="p-4 col-lg-4 col-sm-6 pb-3">
+      <h2>{{image.description}}</h2>
+      <p>Type: {{image.type}}</p>
+      <p>Size: {{image.size}}</p>
+      <div>
+        <button type="button" class="btn btn-secondary"><i class="fas fa-download fa-3x" style="font-size: small;"></i>
+          Download</button>
+      </div>
 
-        <div>
-            <button type="button" class="btn btn-secondary"><i class="fas fa-download fa-3x" style="font-size: small;"></i>  Download</button>
-            <!-- <button type="button" class="btn btn-secondary" style="margin-left: 30px;"><i class="fas fa-edit fa-3x" style="font-size: small;"></i>  Edit</button> -->
-        </div>
-
+    </div>
   </div>
-</div>

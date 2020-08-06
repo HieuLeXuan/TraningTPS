@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -40,6 +41,31 @@ public class User {
 	@Size(max = 120)
 	private String password;
 
+	//
+	@NotBlank
+	@Size(max = 20)
+	private String firstname;
+
+	@NotBlank
+	@Size(max = 20)
+	private String lastname;
+
+	@Lob
+	private byte[] data;
+
+	@NotBlank
+	@Size(max = 10)
+	private String datatype;
+
+	@NotBlank
+	@Size(max = 10)
+	private Long phone;
+
+	@NotBlank
+	@Size(max = 100)
+	private String location;
+	//
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
@@ -54,6 +80,23 @@ public class User {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+	}
+
+	public User(Long id, String username, String email, String password, String firstname, String lastname, byte[] data,
+			String datatype, Long phone, String location, Set<Role> roles, Set<Image> images) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.data = data;
+		this.datatype = datatype;
+		this.phone = phone;
+		this.location = location;
+		this.roles = roles;
+		this.images = images;
 	}
 
 	public Long getId() {
@@ -102,6 +145,54 @@ public class User {
 
 	public void setImages(Set<Image> images) {
 		this.images = images;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
+	}
+
+	public String getDatatype() {
+		return datatype;
+	}
+
+	public void setDatatype(String datatype) {
+		this.datatype = datatype;
+	}
+
+	public Long getPhone() {
+		return phone;
+	}
+
+	public void setPhone(Long phone) {
+		this.phone = phone;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 }
