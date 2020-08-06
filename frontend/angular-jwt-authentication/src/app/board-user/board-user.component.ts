@@ -47,17 +47,17 @@ export class BoardUserComponent implements OnInit {
 
   upload() {
     this.progress = 0;
-
+    
     this.currentFile = this.selectedFiles.item(0);
     this.imageService.upload(this.currentFile, this.descript).subscribe(
-      (event) => {
+      event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round((100 * event.loaded) / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
         }
       },
-      (err) => {
+      err => {
         this.progress = 0;
         this.message = 'Could not upload the file!';
         this.currentFile = undefined;

@@ -16,10 +16,10 @@ public class JwtResponse {
 	private Long phone;
 	private String location;
 
-	public JwtResponse(String token, Long id, String username, String email, List<String> roles, String firstname,
+	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, String firstname,
 			String lastname, byte[] data, String datatype, Long phone, String location) {
 		super();
-		this.token = token;
+		this.token = accessToken;
 		this.id = id;
 		this.username = username;
 		this.data = data;
@@ -32,15 +32,15 @@ public class JwtResponse {
 		this.roles = roles;
 	}
 
-	public String getToken() {
+	public String getAccessToken() {
 		return token;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public void setAccessToken(String accessToken) {
+		this.token = accessToken;
 	}
 
-	public String getType() {
+	public String getTokenType() {
 		return type;
 	}
 

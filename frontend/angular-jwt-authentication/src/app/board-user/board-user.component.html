@@ -22,7 +22,7 @@
       </div>
 
       <div class="input-group input-group-sm mb-3">
-        <input type="file" accept="image/*" (change)="selectFile($event)" multiple/><br/>
+        <input type="file" accept="image/*" (change)="selectFile($event)"/>
         <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
           Upload
         </button>
