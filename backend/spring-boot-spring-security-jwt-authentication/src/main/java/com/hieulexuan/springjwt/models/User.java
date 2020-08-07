@@ -63,7 +63,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
-
+	
 	public User(Long id, String username, String email, String password, String firstname, String lastname, byte[] data,
 			String datatype, Long phone, String location, Set<Role> roles, Set<Image> images) {
 		super();

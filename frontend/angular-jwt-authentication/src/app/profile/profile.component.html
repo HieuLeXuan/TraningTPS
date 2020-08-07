@@ -10,8 +10,8 @@
       <div class="col-sm-3">
         <div class="text-center">
           <h1>{{ currentUser.username }}</h1>
-          <img src="data:{{currentUser.datatype}};base64,{{currentUser.data}}" class="avatar rounded-circle img-thumbnail"
-            alt="avatar" />
+          <img src="data:{{currentUser.datatype}};base64,{{currentUser.data}}"
+            class="avatar rounded-circle img-thumbnail" alt="avatar" />
           <h6>Upload a different photo...</h6>
           <input type="file" accept="image/*" class="text-center center-block file-upload"/>
         </div>
@@ -62,42 +62,42 @@
                   <h4>Firstname</h4>
                 </label>
                 <input type="text" class="form-control" name="firstname" id="phone" placeholder="enter firstname"
-                  title="enter your firstname if any." value=" {{ currentUser.firstname }}"/>
+                  title="enter your firstname if any." value=" {{ currentUser.firstname }}" />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="lastname">
                   <h4>Lastname</h4>
                 </label>
                 <input type="text" class="form-control" name="lastname" id="phone" placeholder="enter lastname"
-                  title="enter your lastname if any." value=" {{ currentUser.lastname }}"/>
+                  title="enter your lastname if any." value=" {{ currentUser.lastname }}" />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="phone">
                   <h4>Phone</h4>
                 </label>
                 <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone"
-                  title="enter your phone number if any." value=" {{ currentUser.phone }}"/>
+                  title="enter your phone number if any." value=" 0{{ currentUser.phone }}" />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="email">
                   <h4>Email</h4>
                 </label>
                 <input type="text" class="form-control" name="email" id="phone" placeholder="enter email"
-                  title="enter your email if any." value=" {{ currentUser.email }}"/>
+                  title="enter your email if any." value=" {{ currentUser.email }}" />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="location">
                   <h4>Location</h4>
                 </label>
                 <input type="text" class="form-control" name="location" id="phone" placeholder="enter location"
-                  title="enter your location if any." value=" {{ currentUser.location }}"/>
+                  title="enter your location if any." value=" {{ currentUser.location }}" />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="username">
                   <h4>Username</h4>
                 </label>
                 <input type="text" class="form-control" name="username" id="phone" placeholder="enter username"
-                  title="enter your username if any." value=" {{ currentUser.username }}"/>
+                  title="enter your username if any." value=" {{ currentUser.username }}" />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="password">

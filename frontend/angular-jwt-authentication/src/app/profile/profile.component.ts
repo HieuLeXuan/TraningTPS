@@ -9,6 +9,7 @@ import { User } from '../model/user';
   styleUrls: ['../../assets/css/styles.css']
 })
 export class ProfileComponent implements OnInit {
+  
   currentUser: any;
   user: User;
 
@@ -16,13 +17,5 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
-  }
-
-  save() {
-
-  }
-
-  reset() {
-
   }
 }

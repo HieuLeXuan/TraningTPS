@@ -14,14 +14,13 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  updateUser(file: File, user: User, id: string): Observable<HttpEvent<any>> {
+  updateUser(file: File, user: User): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
 
     formData.append('file', file);
     // formData.append('user', user);
-    formData.append('id', id);
 
-    const req = new HttpRequest('PUT', API_URL + 'uses/id', formData, {
+    const req = new HttpRequest('PUT', API_URL + 'uses', formData, {
       reportProgress: true,
       responseType: 'json',
     });
