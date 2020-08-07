@@ -1,5 +1,6 @@
 package com.hieulexuan.springjwt.controllers;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +41,9 @@ public class UploadFileController {
 
 	@Autowired
 	UserRepository userRepository;
+
+	@Autowired
+	PasswordEncoder encoder;
 
 	@PostMapping("/upload")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
@@ -80,19 +85,28 @@ public class UploadFileController {
 	}
 
 //	https://medium.com/velacorpblog/l%C3%A0m-quen-v%C3%A0-x%C3%A2y-d%E1%BB%B1ng-restfull-api-crud-%C4%91%C6%A1n-gi%E1%BA%A3n-v%E1%BB%9Bi-spring-boot-5cb812245d2b
-	@PutMapping("user/{id}")
-	public ResponseEntity<User> updateProduct(@PathVariable("id") Long id, @RequestBody User user) {
-		Optional<User> currentUser = userRepository.findById(id);
+	@PutMapping("/user")
+	public ResponseEntity<User> updateProduct(@RequestParam("file") MultipartFile file, @RequestBody User user,
+			Principal principal) {
+
+		String username = principal.getName();
+		Optional<User> currentUser = userRepository.findByUsername(username);
+
 		if (!currentUser.isPresent()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
+
 		currentUser.get().setUsername(user.getUsername());
 		currentUser.get().setEmail(user.getEmail());
-//		currentUser.get().setPassword(user.getPassword());
+		currentUser.get().setPassword(encoder.encode(user.getPassword()));
 		currentUser.get().setFirstname(user.getFirstname());
 		currentUser.get().setLastname(user.getLastname());
-		currentUser.get().setData(user.getData());
-//		currentUser.get().setDatatype(user.getData());
+		try {
+			currentUser.get().setData(file.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		currentUser.get().setDatatype(file.getContentType());
 		currentUser.get().setPhone(user.getPhone());
 		currentUser.get().setLocation(user.getLocation());
 

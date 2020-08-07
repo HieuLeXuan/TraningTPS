@@ -5,7 +5,7 @@ import { Image } from '../model/image';
 @Component({
   selector: 'app-detail-img',
   templateUrl: './detail-img.component.html',
-  styleUrls: ['./detail-img.component.css']
+  styleUrls: ['../../assets/css/styles.css']
 })
 export class DetailImgComponent implements OnInit {
 
