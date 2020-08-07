@@ -4,5 +4,4 @@ export class Image{
     description: string;
     size: number;
     type: string;
-    
 }

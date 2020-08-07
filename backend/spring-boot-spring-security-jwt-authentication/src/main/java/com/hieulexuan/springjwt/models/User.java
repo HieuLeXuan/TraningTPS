@@ -16,8 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = "username"),
@@ -28,41 +26,25 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
-	@Size(max = 20)
 	private String username;
 
-	@NotBlank
-	@Size(max = 50)
 	@Email
 	private String email;
 
-	@NotBlank
-	@Size(max = 120)
 	private String password;
 
 	//
-	@NotBlank
-	@Size(max = 20)
 	private String firstname;
 
-	@NotBlank
-	@Size(max = 20)
 	private String lastname;
 
 	@Lob
 	private byte[] data;
 
-	@NotBlank
-	@Size(max = 10)
 	private String datatype;
 
-	@NotBlank
-	@Size(max = 10)
 	private Long phone;
 
-	@NotBlank
-	@Size(max = 100)
 	private String location;
 	//
 
