@@ -1,10 +1,8 @@
 export class User{
-    data: File;
+    id: number;
     firstname: string;
     lastname: string;
     email: string;
     phone: number;
     location: string;
-    username: string;
-    passworld: number;
 }

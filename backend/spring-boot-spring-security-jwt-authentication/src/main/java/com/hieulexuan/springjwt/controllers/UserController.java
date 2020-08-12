@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.hieulexuan.springjwt.message.ResponseMessage;
 import com.hieulexuan.springjwt.models.User;
@@ -31,11 +29,10 @@ public class UserController {
 	UserRepository userRepository;
 
 	@PutMapping("/users")
-	public ResponseEntity<ResponseMessage> updateUser(@RequestParam("file") MultipartFile file, @RequestBody User user,
-			Principal principal) {
+	public ResponseEntity<ResponseMessage> updateUser(@RequestBody User user, Principal principal) {
 		String message = "";
 		try {
-			userService.updateUser(file, user, principal.getName());
+			userService.updateUser(user, principal.getName());
 			message = "Uploaded user successfully!" + principal.getName();
 			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
 		} catch (IOException e) {

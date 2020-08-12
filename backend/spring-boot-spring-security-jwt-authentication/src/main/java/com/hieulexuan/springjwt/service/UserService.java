@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.hieulexuan.springjwt.exceptions.UserNotFoundException;
 import com.hieulexuan.springjwt.models.User;
@@ -20,15 +19,13 @@ public class UserService {
 	@Autowired
 	PasswordEncoder encoder;
 
-	public User updateUser(MultipartFile file, User user, String username) throws IOException {
+	public User updateUser(User user, String username) throws IOException {
 
 		User currentUser = userRepository.findByUsername(username)
 				.orElseThrow(() -> new UserNotFoundException(username));
 
 		currentUser.setUsername(user.getUsername());
 		currentUser.setPassword(encoder.encode(user.getPassword()));
-		currentUser.setData(file.getBytes());
-		currentUser.setDatatype(file.getContentType());
 		currentUser.setEmail(user.getEmail());
 		currentUser.setFirstname(user.getFirstname());
 		currentUser.setLastname(user.getLastname());

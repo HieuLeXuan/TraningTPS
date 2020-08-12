@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,11 +37,6 @@ public class User {
 
 	private String lastname;
 
-	@Lob
-	private byte[] data;
-
-	private String datatype;
-
 	private Long phone;
 
 	private String location;
@@ -63,9 +57,9 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
-	
-	public User(Long id, String username, String email, String password, String firstname, String lastname, byte[] data,
-			String datatype, Long phone, String location, Set<Role> roles, Set<Image> images) {
+
+	public User(Long id, String username, String email, String password, String firstname, String lastname, Long phone,
+			String location, Set<Role> roles, Set<Image> images) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -73,8 +67,6 @@ public class User {
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.data = data;
-		this.datatype = datatype;
 		this.phone = phone;
 		this.location = location;
 		this.roles = roles;
@@ -143,22 +135,6 @@ public class User {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
-	}
-
-	public byte[] getData() {
-		return data;
-	}
-
-	public void setData(byte[] data) {
-		this.data = data;
-	}
-
-	public String getDatatype() {
-		return datatype;
-	}
-
-	public void setDatatype(String datatype) {
-		this.datatype = datatype;
 	}
 
 	public Long getPhone() {

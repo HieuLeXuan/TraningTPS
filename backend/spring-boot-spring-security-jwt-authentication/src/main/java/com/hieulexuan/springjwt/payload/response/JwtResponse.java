@@ -11,19 +11,15 @@ public class JwtResponse {
 	private List<String> roles;
 	private String firstname;
 	private String lastname;
-	private byte[] data;
-	private String datatype;
 	private Long phone;
 	private String location;
 
 	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, String firstname,
-			String lastname, byte[] data, String datatype, Long phone, String location) {
+			String lastname, Long phone, String location) {
 		super();
 		this.token = accessToken;
 		this.id = id;
 		this.username = username;
-		this.data = data;
-		this.datatype = datatype;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.location = location;
@@ -62,22 +58,6 @@ public class JwtResponse {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public byte[] getData() {
-		return data;
-	}
-
-	public void setData(byte[] data) {
-		this.data = data;
-	}
-
-	public String getDatatype() {
-		return datatype;
-	}
-
-	public void setDatatype(String datatype) {
-		this.datatype = datatype;
 	}
 
 	public String getFirstname() {

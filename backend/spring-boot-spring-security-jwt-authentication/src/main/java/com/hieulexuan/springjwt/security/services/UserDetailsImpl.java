@@ -26,14 +26,12 @@ public class UserDetailsImpl implements UserDetails {
 
 	private String firstname;
 	private String lastname;
-	private byte[] data;
-	private String datatype;
 	private Long phone;
 	private String location;
 
 	public UserDetailsImpl(Long id, String username, String email, String password,
-			Collection<? extends GrantedAuthority> authorities, String firstname, String lastname, byte[] data,
-			String datatype, Long phone, String location) {
+			Collection<? extends GrantedAuthority> authorities, String firstname, String lastname, Long phone,
+			String location) {
 
 		this.id = id;
 		this.username = username;
@@ -42,8 +40,6 @@ public class UserDetailsImpl implements UserDetails {
 		this.authorities = authorities;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.data = data;
-		this.datatype = datatype;
 		this.phone = phone;
 		this.location = location;
 	}
@@ -53,8 +49,7 @@ public class UserDetailsImpl implements UserDetails {
 				.map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
 
 		return new UserDetailsImpl(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), authorities,
-				user.getFirstname(), user.getLastname(), user.getData(), user.getDatatype(), user.getPhone(),
-				user.getLocation());
+				user.getFirstname(), user.getLastname(), user.getPhone(), user.getLocation());
 	}
 
 	@Override
@@ -116,14 +111,6 @@ public class UserDetailsImpl implements UserDetails {
 
 	public String getLastname() {
 		return lastname;
-	}
-
-	public byte[] getData() {
-		return data;
-	}
-
-	public String getDatatype() {
-		return datatype;
 	}
 
 	public Long getPhone() {
