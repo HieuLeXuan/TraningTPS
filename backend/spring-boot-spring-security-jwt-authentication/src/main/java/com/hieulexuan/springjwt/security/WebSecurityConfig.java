@@ -1,7 +1,6 @@
 package com.hieulexuan.springjwt.security;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,8 +26,8 @@ import com.hieulexuan.springjwt.security.services.UserDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
-		// securedEnabled = true,
-		// jsr250Enabled = true,
+		securedEnabled = true,
+		jsr250Enabled = true,
 		prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
@@ -59,21 +58,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 	
-	 @Bean
-	    public CorsConfigurationSource corsConfigurationSource() {
-	        final CorsConfiguration configuration = new CorsConfiguration();
-	        configuration.setAllowedOrigins(Collections.singletonList("*"));
-	        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
-	        configuration.setAllowCredentials(true);
-	        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
-	        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	        source.registerCorsConfiguration("/**", configuration);
-	        return source;
-	    }
-	
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+		final CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("*"));
+		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS"));
+		configuration.setAllowCredentials(true);
+	    configuration.setAllowedHeaders(Arrays.asList("Content-Type", "content-type", "x-requested-with", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "x-auth-token", "x-app-id", "Origin","Accept", "X-Requested-With", "Access-Control-Request-Method", "Access-Control-Request-Headers"));
+	    configuration.addAllowedOrigin("*");
+        configuration.addAllowedHeader("*");
+        configuration.addAllowedMethod("*");
+	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	    source.registerCorsConfiguration("/**", configuration);
+	  return source;
+	}
+	 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().configurationSource((unused) -> new CorsConfiguration().applyPermitDefaultValues()).and().csrf().disable()
+		http.cors().and().csrf().disable()
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.authorizeRequests()
@@ -81,7 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/load/upload").hasAnyRole("ADMIN", "USER")
 				.antMatchers("/api/load/files").permitAll()
 				.antMatchers("/api/load/files/**").permitAll()
-				.antMatchers("/api/users/**").hasAnyRole("ADMIN", "USER")
+				.antMatchers("/api/user/**").hasAnyRole("ADMIN", "USER")
 				.anyRequest().authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}

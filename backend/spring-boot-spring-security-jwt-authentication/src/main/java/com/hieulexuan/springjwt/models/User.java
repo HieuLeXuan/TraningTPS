@@ -32,15 +32,13 @@ public class User {
 
 	private String password;
 
-	//
 	private String firstname;
 
 	private String lastname;
 
-	private Long phone;
+	private String phone;
 
 	private String location;
-	//
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -58,7 +56,7 @@ public class User {
 		this.password = password;
 	}
 
-	public User(Long id, String username, String email, String password, String firstname, String lastname, Long phone,
+	public User(Long id, String username, String email, String password, String firstname, String lastname, String phone,
 			String location, Set<Role> roles, Set<Image> images) {
 		super();
 		this.id = id;
@@ -137,11 +135,11 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	public Long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

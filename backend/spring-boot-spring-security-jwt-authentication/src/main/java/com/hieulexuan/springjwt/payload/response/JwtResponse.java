@@ -11,11 +11,11 @@ public class JwtResponse {
 	private List<String> roles;
 	private String firstname;
 	private String lastname;
-	private Long phone;
+	private String phone;
 	private String location;
 
 	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, String firstname,
-			String lastname, Long phone, String location) {
+			String lastname, String phone, String location) {
 		super();
 		this.token = accessToken;
 		this.id = id;
@@ -84,11 +84,11 @@ public class JwtResponse {
 		this.location = location;
 	}
 
-	public Long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

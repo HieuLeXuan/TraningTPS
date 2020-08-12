@@ -26,11 +26,11 @@ public class UserDetailsImpl implements UserDetails {
 
 	private String firstname;
 	private String lastname;
-	private Long phone;
+	private String phone;
 	private String location;
 
 	public UserDetailsImpl(Long id, String username, String email, String password,
-			Collection<? extends GrantedAuthority> authorities, String firstname, String lastname, Long phone,
+			Collection<? extends GrantedAuthority> authorities, String firstname, String lastname, String phone,
 			String location) {
 
 		this.id = id;
@@ -113,7 +113,7 @@ public class UserDetailsImpl implements UserDetails {
 		return lastname;
 	}
 
-	public Long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 

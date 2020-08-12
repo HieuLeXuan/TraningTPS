@@ -10,7 +10,13 @@
       <div class="container d-flex align-items-center flex-column">
 
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0">{{currentUser.username}} Profile</h1>
+        <h1 class="masthead-heading text-uppercase mb-0" *ngIf = "!textProfile">{{currentUser.username}} Profile</h1>
+        <div class="input-group mb-3 col-lg-4" *ngIf = "textProfile">
+          <input type="text" class="form-control" placeholder="enter username" aria-describedby="basic-addon2" value="{{currentUser.username}}" [(ngModel)]="copyOfCurrentUser.username" >
+          <div class="input-group-append">
+            <h1><span class="input-group-text" id="basic-addon2">PROFILE</span></h1>
+          </div>
+        </div>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
           <div class="divider-custom-line"></div>
@@ -31,10 +37,10 @@
       <div class="col-sm-12" id="main">
         <ul class="nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#home">Profile</a>
+            <a class="nav-link active" data-toggle="tab" href="#home" (click)="textProfile = false">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#messages"><i class="fa fa-edit fa-1x"></i> Edit Profile</a>
+            <a class="nav-link" data-toggle="tab" href="#messages" (click)="beginEdit()"><i class="fa fa-edit fa-1x"></i> Edit Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
@@ -61,7 +67,7 @@
               <div class="col-lg-6 mr-auto">
                 <p class="lead">
                   <strong>Phone:</strong><br />
-                  0{{ currentUser.phone }}
+                  {{ currentUser.phone }}
                 </p>
               </div>
               <div class="col-lg-6 mr-auto">
@@ -91,57 +97,36 @@
                   <h4>Firstname</h4>
                 </label>
                 <input type="text" class="form-control" name="firstname" id="firstname" placeholder="enter firstname"
-                  title="enter your firstname if any." value=" {{ currentUser.firstname }}" />
+                  title="enter your firstname if any." [(ngModel)]="copyOfCurrentUser.firstname" #ctrl="ngModel" required />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="lastname">
                   <h4>Lastname</h4>
                 </label>
                 <input type="text" class="form-control" name="lastname" id="lastname" placeholder="enter lastname"
-                  title="enter your lastname if any." value=" {{ currentUser.lastname }}" />
+                  title="enter your lastname if any." [(ngModel)]="copyOfCurrentUser.lastname" #ctrl="ngModel" required />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="phone">
                   <h4>Phone</h4>
                 </label>
                 <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone"
-                  title="enter your phone number if any." value=" 0{{ currentUser.phone }}" />
+                  title="enter your phone number if any." [(ngModel)]="copyOfCurrentUser.phone" #ctrl="ngModel" required />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="email">
                   <h4>Email</h4>
                 </label>
                 <input type="text" class="form-control" name="email" id="email" placeholder="enter email"
-                  title="enter your email if any." value=" {{ currentUser.email }}" />
+                  title="enter your email if any." [(ngModel)]="copyOfCurrentUser.email" #ctrl="ngModel" required />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="location">
                   <h4>Location</h4>
                 </label>
                 <input type="text" class="form-control" name="location" id="location" placeholder="enter location"
-                  title="enter your location if any." value=" {{ currentUser.location }}" />
+                  title="enter your location if any." [(ngModel)]="copyOfCurrentUser.location" #ctrl="ngModel" required />
               </div>
-              <!-- <div class="col-lg-6 mr-auto">
-                <label for="username">
-                  <h4>Username</h4>
-                </label>
-                <input type="text" class="form-control" name="username" id="phone" placeholder="enter username"
-                  title="enter your username if any." value=" {{ currentUser.username }}" />
-              </div> -->
-              <!-- <div class="col-lg-6 mr-auto">
-                <label for="password">
-                  <h4>Password</h4>
-                </label>
-                <input type="text" class="form-control" name="password" id="phone" placeholder="enter password"
-                  title="enter your password if any." />
-              </div>
-              <div class="col-lg-6 mr-auto">
-                <label for="verify">
-                  <h4>Verify</h4>
-                </label>
-                <input type="text" class="form-control" name="verify" id="phone" placeholder="enter vetify password"
-                  title="enter your verify if any." />
-              </div> -->
             </div>
 
             <div class="form-group">
@@ -150,7 +135,7 @@
                 <button class="btn btn-lg btn-success" (click)="save()">
                   <i class="fa fa-save fa-1x"></i> Save
                 </button>
-                <button class="btn btn-lg" type="reset">
+                <button class="btn btn-lg" type="reset" (click)="reset()">
                   <i class="fa fa-reply fa-1x"></i> Reset
                 </button>
               </div>
