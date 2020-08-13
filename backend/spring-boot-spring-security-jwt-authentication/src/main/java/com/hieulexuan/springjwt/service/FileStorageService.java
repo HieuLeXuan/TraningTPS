@@ -1,16 +1,12 @@
 package com.hieulexuan.springjwt.service;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,12 +40,12 @@ public class FileStorageService {
 	public Image store(MultipartFile file, String description, String username) throws IOException {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		java.util.Date date = new java.util.Date();
-		
-		User user = userRepository.findByUsername(username)
-				.orElseThrow(() -> new UserNotFoundException(username));
-		
-		Image image = new Image(fileName, file.getContentType(), file.getBytes(), description, date, root.toString(), user);
-		
+
+		User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(username));
+
+		Image image = new Image(fileName, file.getContentType(), file.getBytes(), description, date, root.toString(),
+				user);
+
 		Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
 		return imageRepository.save(image);
 	}

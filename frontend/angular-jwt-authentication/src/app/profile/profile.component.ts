@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 import { Observable } from 'rxjs';
-import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-profile',

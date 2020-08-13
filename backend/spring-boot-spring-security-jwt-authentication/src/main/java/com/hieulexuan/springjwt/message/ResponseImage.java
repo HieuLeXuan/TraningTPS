@@ -1,20 +1,41 @@
 package com.hieulexuan.springjwt.message;
 
+import java.util.Date;
+
 public class ResponseImage {
+	private String id;
 	private String name;
-//	private byte[] data;
 	private String url;
 	private String description;
 	private String type;
 	private long size;
+	private Date createdate;
 
-	public ResponseImage(String name, String url, String description, String type, long size) {
+	public ResponseImage(String id, String name, String url, String description, String type, long size,
+			Date createdate) {
+		this.id = id;
 		this.name = name;
-//		this.data = data;
 		this.url = url;
 		this.description = description;
 		this.type = type;
 		this.size = size;
+		this.createdate = createdate;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Date getCreatedate() {
+		return createdate;
+	}
+
+	public void setCreatedate(Date createdate) {
+		this.createdate = createdate;
 	}
 
 	public String getName() {
@@ -28,14 +49,6 @@ public class ResponseImage {
 	public String getUrl() {
 		return url;
 	}
-//
-//	public byte[] getData() {
-//		return data;
-//	}
-//
-//	public void setData(byte[] data) {
-//		this.data = data;
-//	}
 
 	public void setUrl(String url) {
 		this.url = url;

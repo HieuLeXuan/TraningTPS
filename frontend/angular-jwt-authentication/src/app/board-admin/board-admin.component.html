@@ -26,3 +26,146 @@
     </div>
   </div>
 </div> -->
+
+<ng-template #loggedOut>
+  <header class="jumbotron">
+    Please login.
+  </header>
+</ng-template>
+
+<div class="container" style="margin-top: 140px;">
+  <header class="jumbotron" *ngIf="currentUser; else loggedOut">
+    <div class="row">
+      <div class="container d-flex align-items-center flex-column"></div>
+      <div class="col-sm-12" id="main">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#home"><i class="fa fa-image fa-1x"></i> Images</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#messages"><i class="fa fa-user-plus fa-1x"></i> Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <hr />
+
+            <div class="panel-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                    <th>Create-date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let image of images | async">
+                    <td>{{ image.id }}</td>
+                    <td>{{ image.description }}</td>
+                    <td>{{ image.type }}</td>
+                    <td>{{ image.size }}</td>
+                    <td>{{ image.createdate }}</td>
+                    <td>
+                      <a (click)="basicModal.show()"><i class="fa fa-pen-square fa-1x"></i></a>
+                      <a><i class="fa fa-eye fa-1x" style="margin-left: 5px;"></i></a>
+                      <a><i class="fa fa-trash fa-1x" style="margin-left: 5px;"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr />
+          </div>
+          <div class="tab-pane" id="messages">
+            <div class="panel-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Username</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users | async">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.lastname }} {{ user.firstname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.location }}</td>
+                    <td>
+                      <a><i class="fa fa-pen-square fa-1x"></i></a>
+                      <a><i class="fa fa-eye fa-1x" style="margin: 5px;"></i></a>
+                      <a><i class="fa fa-trash fa-1x"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- images -->
+<div mdbModal #basicModal="mdbModal" class="modal fade top" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-id-card fa-xs prefix grey-text"></i>
+          <input type="text" id="form34" class="form-control" mdbInput mdbValidate >
+          <label for="form34">Identification</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fas fa-audio-description fa-xs prefix grey-text"></i>
+          <input type="email" id="form29" class="form-control" mdbInput mdbValidate >
+          <label for="form29">Description</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fas fa-window-restore fa-xs prefix grey-text"></i>
+          <input type="text" id="form32" class="form-control" mdbInput mdbValidate >
+          <label for="form32">Type</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fas fa-expand fa-xs prefix grey-text"></i>
+          <input type="text" id="form32" class="form-control" mdbInput mdbValidate >
+          <label for="form32">Size</label>
+        </div>
+
+        <button class="btn btn-lg btn-success">
+          <i class="fa fa-save fa-1x"></i> Save
+        </button>
+        <button class="btn btn-lg" type="reset">
+          <i class="fa fa-reply fa-1x"></i> Reset
+        </button>
+
+      </div>
+    </div>
+  </div>

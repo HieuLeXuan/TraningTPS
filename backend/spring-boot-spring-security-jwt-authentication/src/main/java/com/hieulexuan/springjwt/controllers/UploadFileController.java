@@ -59,8 +59,8 @@ public class UploadFileController {
 			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/load/files/")
 					.path(dbImage.getId()).toUriString();
 
-			return new ResponseImage(dbImage.getName(), imageDownloadUri, dbImage.getDescription(), dbImage.getType(),
-					dbImage.getData().length);
+			return new ResponseImage(dbImage.getId(), dbImage.getName(), imageDownloadUri, dbImage.getDescription(), dbImage.getType(),
+					dbImage.getData().length, dbImage.getCreateDate());
 		}).collect(Collectors.toList());
 
 		return ResponseEntity.status(HttpStatus.OK).body(images);

@@ -1,6 +1,7 @@
 package com.hieulexuan.springjwt.service;
 
 import java.io.IOException;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,5 +34,9 @@ public class UserService {
 		currentUser.setLocation(user.getLocation());
 
 		return userRepository.save(currentUser);
+	}
+
+	public Stream<User> getAllUsers() {
+		return userRepository.findAll().stream();
 	}
 }
