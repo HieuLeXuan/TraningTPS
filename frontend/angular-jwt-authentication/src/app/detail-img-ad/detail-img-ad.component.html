@@ -1,0 +1,33 @@
+<div *ngIf="image2">
+    <div class="md-form mb-5">
+        <i class="fas fa-id-card fa-xs prefix grey-text"></i>
+        <input type="text" id="form34" class="form-control" mdbInput mdbValidate value="{{image2.id}}" >
+        <label for="form34">Identification</label>
+      </div>
+
+      <div class="md-form mb-5">
+        <i class="fas fa-audio-description fa-xs prefix grey-text"></i>
+        <input type="email" id="form29" class="form-control" mdbInput mdbValidate value="{{image2.description}}" >
+        <label for="form29">Description</label>
+      </div>
+
+      <div class="md-form mb-5">
+        <i class="fas fa-window-restore fa-xs prefix grey-text"></i>
+        <input type="text" id="form32" class="form-control" mdbInput mdbValidate value="{{image2.type}}" >
+        <label for="form32">Type</label>
+      </div>
+
+      <div class="md-form mb-5">
+        <i class="fas fa-expand fa-xs prefix grey-text"></i>
+        <input type="text" id="form32" class="form-control" mdbInput mdbValidate value="{{image2.size}}" >
+        <label for="form32">Size</label>
+      </div>
+
+      <button class="btn btn-lg btn-success">
+        <i class="fa fa-save fa-1x"></i> Save
+      </button>
+      <button class="btn btn-lg" type="reset">
+        <i class="fa fa-reply fa-1x"></i> Reset
+      </button>
+
+</div>

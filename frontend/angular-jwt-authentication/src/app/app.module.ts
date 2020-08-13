@@ -15,6 +15,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { DetailImgComponent } from './detail-img/detail-img.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DetailImgAdComponent } from './detail-img-ad/detail-img-ad.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegisterComponent,
     BoardUserComponent,
     DetailImgComponent,
+    DetailImgAdComponent,
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule, MDBBootstrapModule.forRoot(), BrowserAnimationsModule],
   providers: [authInterceptorProviders],

@@ -66,7 +66,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let image of images | async">
+                  <tr *ngFor="let image of images | async" [class.selected]="image === selectedImage" (click)="onSelect(image)">
                     <td>{{ image.id }}</td>
                     <td>{{ image.description }}</td>
                     <td>{{ image.type }}</td>
@@ -85,6 +85,8 @@
             <hr />
           </div>
           <div class="tab-pane" id="messages">
+            <hr />
+
             <div class="panel-body">
               <table class="table table-striped">
                 <thead>
@@ -135,37 +137,7 @@
       </div>
 
       <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="fas fa-id-card fa-xs prefix grey-text"></i>
-          <input type="text" id="form34" class="form-control" mdbInput mdbValidate >
-          <label for="form34">Identification</label>
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-audio-description fa-xs prefix grey-text"></i>
-          <input type="email" id="form29" class="form-control" mdbInput mdbValidate >
-          <label for="form29">Description</label>
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-window-restore fa-xs prefix grey-text"></i>
-          <input type="text" id="form32" class="form-control" mdbInput mdbValidate >
-          <label for="form32">Type</label>
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-expand fa-xs prefix grey-text"></i>
-          <input type="text" id="form32" class="form-control" mdbInput mdbValidate >
-          <label for="form32">Size</label>
-        </div>
-
-        <button class="btn btn-lg btn-success">
-          <i class="fa fa-save fa-1x"></i> Save
-        </button>
-        <button class="btn btn-lg" type="reset">
-          <i class="fa fa-reply fa-1x"></i> Reset
-        </button>
-
+        <app-detail-img-ad [image2]="selectedImage"></app-detail-img-ad>
       </div>
     </div>
   </div>

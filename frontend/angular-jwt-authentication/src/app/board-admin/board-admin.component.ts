@@ -3,6 +3,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
 import { ImageService } from '../_services/image.service';
 import { Observable } from 'rxjs';
 import { UserService } from '../_services/user.service';
+import { Image } from '../model/image';
 
 @Component({
   selector: 'app-board-admin',
@@ -15,6 +16,8 @@ export class BoardAdminComponent implements OnInit {
   images: Observable<any>;
   users: Observable<any>;
 
+  selectedImage: Image;
+
   constructor(
     private imageService: ImageService,
     private userService: UserService,
@@ -25,5 +28,9 @@ export class BoardAdminComponent implements OnInit {
     this.currentUser = this.token.getUser();
     this.images = this.imageService.getListImages();
     this.users = this.userService.getListsers();
+  }
+
+  onSelect(image: Image): void {
+    this.selectedImage = image;
   }
 }
