@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,12 +23,16 @@ import com.hieulexuan.springjwt.message.ResponseMessage;
 import com.hieulexuan.springjwt.message.ResponseUser;
 import com.hieulexuan.springjwt.models.User;
 import com.hieulexuan.springjwt.repository.UserRepository;
+import com.hieulexuan.springjwt.security.services.UserDetailsImpl;
 import com.hieulexuan.springjwt.service.UserService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class UserController {
+	
+	@Autowired
+	AuthenticationManager authenticationManager;
 
 	@Autowired
 	UserService userService;
@@ -38,7 +45,7 @@ public class UserController {
 		List<ResponseUser> users = userService.getAllUsers().map(dbUser -> {
 
 			return new ResponseUser(dbUser.getId(), dbUser.getUsername(), dbUser.getFirstname(), dbUser.getLastname(),
-					dbUser.getEmail(), dbUser.getPhone(), dbUser.getLocation());
+					dbUser.getEmail(), dbUser.getLocation(), dbUser.getPhone(), dbUser.getRoles());
 		}).collect(Collectors.toList());
 
 		return ResponseEntity.status(HttpStatus.OK).body(users);

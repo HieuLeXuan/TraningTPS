@@ -1,33 +1,41 @@
 <div *ngIf="image2">
     <div class="md-form mb-5">
         <i class="fas fa-id-card fa-xs prefix grey-text"></i>
-        <input type="text" id="form34" class="form-control" mdbInput mdbValidate value="{{image2.id}}" >
+        <input type="text" id="form34" class="form-control" mdbInput mdbValidate value="{{image2.id}}" disabled >
         <label for="form34">Identification</label>
       </div>
 
       <div class="md-form mb-5">
         <i class="fas fa-audio-description fa-xs prefix grey-text"></i>
-        <input type="email" id="form29" class="form-control" mdbInput mdbValidate value="{{image2.description}}" >
+        <input type="email" id="form29" class="form-control" mdbInput mdbValidate [(ngModel)]="image2.description" #ctrl="ngModel" required>
         <label for="form29">Description</label>
       </div>
 
       <div class="md-form mb-5">
         <i class="fas fa-window-restore fa-xs prefix grey-text"></i>
-        <input type="text" id="form32" class="form-control" mdbInput mdbValidate value="{{image2.type}}" >
+        <input type="text" id="form32" class="form-control" mdbInput mdbValidate value="{{image2.type}}" disabled >
         <label for="form32">Type</label>
       </div>
 
       <div class="md-form mb-5">
         <i class="fas fa-expand fa-xs prefix grey-text"></i>
-        <input type="text" id="form32" class="form-control" mdbInput mdbValidate value="{{image2.size}}" >
+        <input type="text" id="form32" class="form-control" mdbInput mdbValidate value="{{image2.size}}" disabled >
         <label for="form32">Size</label>
       </div>
 
-      <button class="btn btn-lg btn-success">
-        <i class="fa fa-save fa-1x"></i> Save
-      </button>
-      <button class="btn btn-lg" type="reset">
-        <i class="fa fa-reply fa-1x"></i> Reset
-      </button>
+      <div>
+        <button class="btn btn-lg btn-success" style="font-size: 15px;" (click)="save()" >
+          <i class="fa fa-save fa-1x"></i> Save
+        </button>
+        <button class="btn btn-lg btn-danger" style="margin-left: 10px; font-size: 15px;" (click)="delete()">
+          <i class="fa fa-trash fa-1x"></i> Delete
+        </button>
+      </div>
 
+</div>
+
+<div *ngIf="image3">
+  <div class="col-lg-12 col-sm-12 pb-3">
+    <img class="img-thumbnail" src="{{ image3.url }}" alt="Business Consulting" />
+  </div>
 </div>

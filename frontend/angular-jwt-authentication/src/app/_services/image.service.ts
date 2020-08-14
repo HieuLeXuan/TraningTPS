@@ -4,10 +4,16 @@ import { Observable } from 'rxjs';
 
 const API_URL = 'http://localhost:8081/api/load/';
 
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
+
+  private url = 'http://localhost:8081/api/image';
 
   constructor(private http: HttpClient) { }
 
@@ -27,5 +33,13 @@ export class ImageService {
 
   getListImages(): Observable<any> {
     return this.http.get(API_URL + 'files');
+  }
+
+  updateImage(image, id: string): Observable<any> {
+    return this.http.put(`${this.url}/${id}`, image, httpOptions)
+  }
+
+  deleteImage(id: string): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
   }
 }

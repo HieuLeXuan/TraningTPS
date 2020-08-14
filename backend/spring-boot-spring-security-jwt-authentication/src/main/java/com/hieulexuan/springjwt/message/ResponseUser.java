@@ -1,5 +1,9 @@
 package com.hieulexuan.springjwt.message;
 
+import java.util.Set;
+
+import com.hieulexuan.springjwt.models.Role;
+
 public class ResponseUser {
 
 	private long id;
@@ -10,12 +14,14 @@ public class ResponseUser {
 	private String location;
 	private String phone;
 
+	private Set<Role> roles;
+
 	public ResponseUser() {
 		super();
 	}
 
 	public ResponseUser(long id, String username, String firstname, String lastname, String email, String location,
-			String phone) {
+			String phone, Set<Role> roles) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -24,7 +30,7 @@ public class ResponseUser {
 		this.email = email;
 		this.location = location;
 		this.phone = phone;
-
+		this.roles = roles;
 	}
 
 	public long getId() {
@@ -81,6 +87,14 @@ public class ResponseUser {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 }

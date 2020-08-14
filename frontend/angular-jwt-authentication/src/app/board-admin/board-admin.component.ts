@@ -4,6 +4,7 @@ import { ImageService } from '../_services/image.service';
 import { Observable } from 'rxjs';
 import { UserService } from '../_services/user.service';
 import { Image } from '../model/image';
+import { User } from '../model/users';
 
 @Component({
   selector: 'app-board-admin',
@@ -17,6 +18,7 @@ export class BoardAdminComponent implements OnInit {
   users: Observable<any>;
 
   selectedImage: Image;
+  selectedUser: User;
 
   constructor(
     private imageService: ImageService,
@@ -27,10 +29,14 @@ export class BoardAdminComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.token.getUser();
     this.images = this.imageService.getListImages();
-    this.users = this.userService.getListsers();
+    this.users = this.userService.getListUsers();
   }
 
-  onSelect(image: Image): void {
+  onSelectImage(image: Image): void {
     this.selectedImage = image;
+  }
+
+  onSelectUser(user: User): void {
+    this.selectedUser = user;
   }
 }
