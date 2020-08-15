@@ -25,12 +25,9 @@ import com.hieulexuan.springjwt.security.services.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(
-		securedEnabled = true,
-		jsr250Enabled = true,
-		prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, jsr250Enabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
 
@@ -57,35 +54,53 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		final CorsConfiguration configuration = new CorsConfiguration();
 		configuration.setAllowedOrigins(Arrays.asList("*"));
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS"));
 		configuration.setAllowCredentials(true);
-	    configuration.setAllowedHeaders(Arrays.asList("Content-Type", "content-type", "x-requested-with", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "x-auth-token", "x-app-id", "Origin","Accept", "X-Requested-With", "Access-Control-Request-Method", "Access-Control-Request-Headers"));
-	    configuration.addAllowedOrigin("*");
-        configuration.addAllowedHeader("*");
-        configuration.addAllowedMethod("*");
-	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	    source.registerCorsConfiguration("/**", configuration);
-	  return source;
+		configuration.setAllowedHeaders(Arrays.asList("Content-Type", "content-type", "x-requested-with",
+				"Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "x-auth-token", "x-app-id", "Origin",
+				"Accept", "X-Requested-With", "Access-Control-Request-Method", "Access-Control-Request-Headers"));
+		configuration.addAllowedOrigin("*");
+		configuration.addAllowedHeader("*");
+		configuration.addAllowedMethod("*");
+		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
 	}
-	 
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable()
-			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.authorizeRequests()
-				.antMatchers("/api/auth/**").permitAll()
-				.antMatchers("/api/load/upload").hasAnyRole("ADMIN", "USER")
-				.antMatchers("/api/load/files").hasAnyRole("ADMIN")
-				.antMatchers("/api/load/files/**").hasAnyRole("ADMIN")
-				.antMatchers("/api/user/**").hasAnyRole("ADMIN", "USER")
-				
-				.anyRequest().authenticated();
+		http.cors().and()
+					.csrf().disable()
+					.exceptionHandling()
+					.authenticationEntryPoint(unauthorizedHandler)
+				.and()
+					.sessionManagement()
+					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+					.authorizeRequests()
+						
+//						login.
+						.antMatchers("/signin").permitAll()
+						.antMatchers("/signin").permitAll()
+						
+//						show image.
+						.antMatchers("/files").hasAnyRole("ADMIN")
+						
+//						get list user.
+						.antMatchers("/users").hasAnyRole("ADMIN")
+
+//						upload image.
+						.antMatchers("/upload").hasAnyRole("ADMIN", "USER") // upload
+		
+//						update current user.
+						.antMatchers("/user").hasAnyRole("ADMIN", "USER")
+		
+						.anyRequest().authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 }

@@ -1,17 +1,15 @@
 <div class="container pt-5 pb-4 py-md-6 py-lg-7">
   <div class="row" *ngIf="image">
     <div class="col-lg-8 col-sm-6 pb-3">
-      <img class="img-thumbnail" src="{{ image.url }}" alt="Business Consulting" />
+      <img class="img-thumbnail" src="data:{{image.type}};base64,{{image.data}}" alt="Business Consulting" />
     </div>
     <div class="p-4 col-lg-4 col-sm-6 pb-3">
       <h2>{{ image.description }}</h2>
       <p>Type: {{ image.type }}</p>
       <p>Size: {{ image.size }}</p>
       <div>
-        <button type="button" class="btn btn-secondary">
-          <i class="fas fa-download fa-3x" style="font-size: small;"></i>
-          Download
-        </button>
+        <a class="btn btn-secondary" href="{{image.url}}" role="button"><i class="fas fa-download fa-3x" style="font-size: small;"></i>
+          Download</a>
       </div>
     </div>
   </div>

@@ -36,13 +36,13 @@
                 <i class="fas fa-eye fa-3x"></i>
               </div>
             </a>
-            <a class="portfolio-link" href="#">
+            <!-- <a class="portfolio-link" href="{{image.url}}">
               <div class="portfolio-hover-content">
                 <i class="fas fa-download fa-3x"></i>
               </div>
-            </a>
+            </a> -->
           </div>
-          <img class="img-thumbnail" src="{{ image.url }}" alt="Business Consulting" />
+          <img class="img-thumbnail" src="data:{{image.type}};base64,{{image.data}}" alt="Business Consulting" />
         </a>
       </div>
     </div>

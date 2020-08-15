@@ -17,7 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hieulexuan.springjwt.models.ERole;
@@ -31,11 +30,10 @@ import com.hieulexuan.springjwt.repository.RoleRepository;
 import com.hieulexuan.springjwt.repository.UserRepository;
 import com.hieulexuan.springjwt.security.jwt.JwtUtils;
 import com.hieulexuan.springjwt.security.services.UserDetailsImpl;
-	
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
-public class AuthController {
+public class LoginController {
 	@Autowired
 	AuthenticationManager authenticationManager;
 

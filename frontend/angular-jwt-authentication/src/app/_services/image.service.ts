@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:8081/api/load/';
+const API_URL = 'http://localhost:8081/';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -12,8 +12,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ImageService {
-
-  private url = 'http://localhost:8081/api/image';
 
   constructor(private http: HttpClient) { }
 
@@ -36,10 +34,10 @@ export class ImageService {
   }
 
   updateImage(image, id: string): Observable<any> {
-    return this.http.put(`${this.url}/${id}`, image, httpOptions)
+    return this.http.put(`${API_URL}` + `image/${id}`, image, httpOptions)
   }
 
   deleteImage(id: string): Observable<any> {
-    return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
+    return this.http.delete(`${API_URL}` + `image/${id}`, { responseType: 'text' });
   }
 }

@@ -6,13 +6,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.hieulexuan.springjwt.service.FileStorageService;
+import com.hieulexuan.springjwt.service.ImageService;
 
 @SpringBootApplication
 public class SpringBootSecurityJwtApplication implements CommandLineRunner{
 
 	@Resource
-	FileStorageService storageService;
+	ImageService storageService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootSecurityJwtApplication.class, args);

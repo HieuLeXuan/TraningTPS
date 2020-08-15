@@ -36,6 +36,6 @@
 
 <div *ngIf="image3">
   <div class="col-lg-12 col-sm-12 pb-3">
-    <img class="img-thumbnail" src="{{ image3.url }}" alt="Business Consulting" />
+    <img class="img-thumbnail" src="data:{{image3.type}};base64,{{image3.data}}" alt="Business Consulting" />
   </div>
 </div>

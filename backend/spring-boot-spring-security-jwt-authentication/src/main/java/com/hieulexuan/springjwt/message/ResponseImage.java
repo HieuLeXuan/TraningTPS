@@ -5,16 +5,18 @@ import java.util.Date;
 public class ResponseImage {
 	private String id;
 	private String name;
+	private byte[] data;
 	private String url;
 	private String description;
 	private String type;
 	private long size;
 	private Date createdate;
 
-	public ResponseImage(String id, String name, String url, String description, String type, long size,
+	public ResponseImage(String id, String name, String url, byte[] data, String description, String type, long size,
 			Date createdate) {
 		this.id = id;
 		this.name = name;
+		this.data = data;
 		this.url = url;
 		this.description = description;
 		this.type = type;
@@ -44,6 +46,14 @@ public class ResponseImage {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
 	}
 
 	public String getUrl() {
