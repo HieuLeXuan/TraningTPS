@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 import { Observable } from 'rxjs';
+import { User } from '../model/users';
 
 @Component({
   selector: 'app-profile',
@@ -18,12 +19,13 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
+    this.currentUser.password = '';
     this.copyOfCurrentUser = { ...this.currentUser };
   }
 
   save(): void {
     const { username, firstname, lastname, phone, email, location} = this.copyOfCurrentUser;
-    this.userService.updateUser({ username, firstname, lastname, phone, email, location }).subscribe(
+    this.userService.updateUser({ username, firstname, lastname, phone, email, location}).subscribe(
       respones => {
         this.currentUser = { ... this.copyOfCurrentUser};
         this.logout();

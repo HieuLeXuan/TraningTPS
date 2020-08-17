@@ -39,6 +39,7 @@ public class UserController {
 
 	// get list current user
 	@GetMapping("/users")
+	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public ResponseEntity<List<ResponseUser>> getListFiles() {
 		List<ResponseUser> users = userService.getAllUsers().map(dbUser -> {
 
@@ -51,6 +52,7 @@ public class UserController {
 
 	// update current user.
 	@PutMapping("/user")
+	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public ResponseEntity<ResponseMessage> updateUser(@RequestBody User user, Principal principal) {
 		String message = "";
 		try {

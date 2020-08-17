@@ -10,9 +10,10 @@
       <div class="container d-flex align-items-center flex-column">
 
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0" *ngIf = "!textProfile">{{currentUser.username}} Profile</h1>
-        <div class="input-group mb-3 col-lg-4" *ngIf = "textProfile">
-          <input type="text" class="form-control" placeholder="enter username" aria-describedby="basic-addon2" value="{{currentUser.username}}" [(ngModel)]="copyOfCurrentUser.username" >
+        <h1 class="masthead-heading text-uppercase mb-0" *ngIf="!textProfile">{{currentUser.username}} Profile</h1>
+        <div class="input-group mb-3 col-lg-4" *ngIf="textProfile">
+          <input type="text" class="form-control" placeholder="enter username" aria-describedby="basic-addon2"
+            value="{{currentUser.username}}" [(ngModel)]="copyOfCurrentUser.username">
           <div class="input-group-append">
             <h1><span class="input-group-text" id="basic-addon2">PROFILE</span></h1>
           </div>
@@ -40,10 +41,12 @@
             <a class="nav-link active" data-toggle="tab" href="#home" (click)="textProfile = false">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#messages" (click)="beginEdit()"><i class="fa fa-edit fa-1x"></i> Edit Profile</a>
+            <a class="nav-link" data-toggle="tab" href="#editprofile" (click)="beginEdit()"><i
+                class="fa fa-edit fa-1x"></i> Edit Profile</a>
           </li>
           <!-- <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#messages" (click)="beginEdit()"><i class="fa fa-edit fa-1x"></i> Change Password</a>
+            <a class="nav-link" data-toggle="tab" href="#changepassword" (click)="beginEdit()"><i
+                class="fa fa-edit fa-1x"></i> Change Password</a>
           </li> -->
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
@@ -90,7 +93,7 @@
             </div>
           </div>
           <!--/tab-pane-->
-          <div class="tab-pane" id="messages">
+          <div class="tab-pane" id="editprofile">
             <h2></h2>
 
             <hr />
@@ -100,21 +103,24 @@
                   <h4>Firstname</h4>
                 </label>
                 <input type="text" class="form-control" name="firstname" id="firstname" placeholder="enter firstname"
-                  title="enter your firstname if any." [(ngModel)]="copyOfCurrentUser.firstname" #ctrl="ngModel" required />
+                  title="enter your firstname if any." [(ngModel)]="copyOfCurrentUser.firstname" #ctrl="ngModel"
+                  required />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="lastname">
                   <h4>Lastname</h4>
                 </label>
                 <input type="text" class="form-control" name="lastname" id="lastname" placeholder="enter lastname"
-                  title="enter your lastname if any." [(ngModel)]="copyOfCurrentUser.lastname" #ctrl="ngModel" required />
+                  title="enter your lastname if any." [(ngModel)]="copyOfCurrentUser.lastname" #ctrl="ngModel"
+                  required />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="phone">
                   <h4>Phone</h4>
                 </label>
                 <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone"
-                  title="enter your phone number if any." [(ngModel)]="copyOfCurrentUser.phone" #ctrl="ngModel" required />
+                  title="enter your phone number if any." [(ngModel)]="copyOfCurrentUser.phone" #ctrl="ngModel"
+                  required />
               </div>
               <div class="col-lg-6 mr-auto">
                 <label for="email">
@@ -128,8 +134,34 @@
                   <h4>Location</h4>
                 </label>
                 <input type="text" class="form-control" name="location" id="location" placeholder="enter location"
-                  title="enter your location if any." [(ngModel)]="copyOfCurrentUser.location" #ctrl="ngModel" required />
+                  title="enter your location if any." [(ngModel)]="copyOfCurrentUser.location" #ctrl="ngModel"
+                  required />
               </div>
+              <!--               
+              <form>
+                <div class="col-lg-6 mr-auto">
+                  <label for="location">
+                    <h4>New Password</h4>
+                  </label>
+                  <input [(ngModel)]="copyOfCurrentUser.password" type="password" class="form-control" name="newpassword"
+                    id="newpassword" title="enter new password if any." placeholder="enter new password"
+                    aria-label="newpassword" aria-describedby="basic-addon1" #modelPassword="ngModel">
+                </div>
+                <div class="col-lg-6 mr-auto">
+                  <label for="location">
+                    <h4>Vertify</h4>
+                  </label>
+                  <input [(ngModel)]="vetify" type="password" class="form-control" name="verify" id="verify"
+                    title="enter vetify password if any." placeholder="enter vetify password" aria-label="vetify"
+                    aria-describedby="basic-addon1" ngValidateEqual="newpassword" #modelConfirmPassword="ngModel">
+                </div>
+                <div *ngIf="(modelConfirmPassword.dirty || modelConfirmPassword.touched) && modelConfirmPassword.invalid">
+                  <p class="alert alert-danger" role="alert"
+                    *ngIf="modelConfirmPassword.hasError('notEqual') && modelPassword.valid">
+                    Passwords Don't Match
+                  </p>
+                </div>
+              </form>   -->
             </div>
 
             <div class="form-group">
@@ -147,6 +179,47 @@
             <hr />
           </div>
           <!--/tab-pane-->
+          <!-- <div class="tab-pane" id="changepassword">
+            <h2>CHANGE PASSWORD</h2>
+            <hr />
+            <form>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width: 130px;"
+                            id="inputGroup-sizing-default">New Password:</span>
+                    </div>
+                    <input [(ngModel)]="currentUser.password" type="password" class="form-control" name="newpassword"
+                        id="newpassword" title="enter new password if any." placeholder="enter new password"
+                        aria-label="newpassword" aria-describedby="basic-addon1" #modelPassword="ngModel">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="width: 130px;"
+                            id="inputGroup-sizing-default">Verify:</span>
+                    </div>
+                    <input [(ngModel)]="vetify" type="password" class="form-control" name="verify"
+                        id="verify" title="enter vetify password if any."
+                        placeholder="enter vetify password" aria-label="vetify"
+                        aria-describedby="basic-addon1" ngValidateEqual="newpassword"
+                        #modelConfirmPassword="ngModel">
+                </div>
+                <div *ngIf="(modelConfirmPassword.dirty || modelConfirmPassword.touched) && modelConfirmPassword.invalid">
+                    <p class="alert alert-danger" role="alert" *ngIf="modelConfirmPassword.hasError('notEqual') && modelPassword.valid">
+                      Passwords Don't Match
+                    </p>
+                </div>
+            </form>
+            <div class="form-group">
+                <div class="col-xs-12" style="text-align: center;">
+                    <br />
+                    <button class="btn btn-lg btn-success" type="submit" (click)="updateUser()" style="font-size: 15px;">
+                        <i class="fa fa-save fa-1x"></i> Update Password
+                    </button>
+                </div>
+            </div>
+            <hr />
+        </div> -->
+        <!--/tab-pane-->
         </div>
         <!--/tab-pane-->
       </div>

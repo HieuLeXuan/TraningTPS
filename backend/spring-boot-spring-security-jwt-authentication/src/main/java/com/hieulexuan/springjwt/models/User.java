@@ -43,7 +43,7 @@ public class User {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permisstion_id"))
 	private Set<Permission> permissions = new HashSet<>();
@@ -60,8 +60,8 @@ public class User {
 		this.password = password;
 	}
 
-	public User(Long id, String username, String email, String password, String firstname, String lastname, String phone,
-			String location, Set<Role> roles, Set<Image> images) {
+	public User(Long id, String username, String email, String password, String firstname, String lastname,
+			String phone, String location, Set<Role> roles, Set<Image> images) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -153,6 +153,14 @@ public class User {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public Set<Permission> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(Set<Permission> permissions) {
+		this.permissions = permissions;
 	}
 
 }

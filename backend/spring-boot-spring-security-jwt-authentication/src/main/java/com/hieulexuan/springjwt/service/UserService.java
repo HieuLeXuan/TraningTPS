@@ -26,7 +26,9 @@ public class UserService {
 				.orElseThrow(() -> new UserNotFoundException(username));
 
 		currentUser.setUsername(user.getUsername());
-//		currentUser.setPassword(encoder.encode(user.getPassword()));
+//		if (currentUser.getPassword() != "") {
+//			currentUser.setPassword(encoder.encode(user.getPassword()));
+//		}
 		currentUser.setEmail(user.getEmail());
 		currentUser.setFirstname(user.getFirstname());
 		currentUser.setLastname(user.getLastname());

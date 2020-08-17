@@ -38,6 +38,8 @@ public class ImageController {
 	@Autowired
 	UserRepository userRepository;
 
+//	http://code-addict.pl/permission-evaluator-boot2/
+	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'upload')")
 	@GetMapping("/files")
 	public ResponseEntity<List<ResponseImage>> getListFiles() {
 		List<ResponseImage> images = imageService.getAllFiles().map(dbImage -> {
@@ -61,7 +63,7 @@ public class ImageController {
 	}
 
 //	upload images.
-//	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'see')")
 	@PostMapping("/upload")
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file,
 			@RequestParam String description, Principal principal) {
