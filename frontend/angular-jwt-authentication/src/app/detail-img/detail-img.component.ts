@@ -18,4 +18,9 @@ export class DetailImgComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.token.getUser();
   }
+
+  downloadImage(): void {
+    this.imageService.downloadImage(this.image.id).subscribe();
+    console.log("ok!");
+  }
 }

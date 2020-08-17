@@ -86,16 +86,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						
 //						login.
 						.antMatchers("/signin").permitAll()
-						.antMatchers("/signin").permitAll()
+						.antMatchers("/signup").permitAll()
 						
 //						show image.
-						.antMatchers("/files").hasAnyRole("ADMIN")
+						.antMatchers("/files").hasAnyRole("ADMIN", "USER")
+						
+//						download images
+						.antMatchers("/file/**").permitAll()
 						
 //						get list user.
 						.antMatchers("/users").hasAnyRole("ADMIN")
 
 //						upload image.
-						.antMatchers("/upload").hasAnyRole("ADMIN", "USER") // upload
+						.antMatchers("/upload").hasAnyRole("ADMIN") // upload
 		
 //						update current user.
 						.antMatchers("/user").hasAnyRole("ADMIN", "USER")

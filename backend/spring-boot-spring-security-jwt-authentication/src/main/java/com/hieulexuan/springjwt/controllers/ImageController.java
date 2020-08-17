@@ -51,14 +51,14 @@ public class ImageController {
 		return ResponseEntity.status(HttpStatus.OK).body(images);
 	}
 
-//	@GetMapping("/file/{id}")
-//	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
-//		Image image = imageService.getFile(id);
-//
-//		return ResponseEntity.ok()
-//				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
-//				.body(image.getData());
-//	}
+	@GetMapping("/file/{id}")
+	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
+		Image image = imageService.getFile(id);
+
+		return ResponseEntity.ok()
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
+				.body(image.getData());
+	}
 
 //	upload images.
 //	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")

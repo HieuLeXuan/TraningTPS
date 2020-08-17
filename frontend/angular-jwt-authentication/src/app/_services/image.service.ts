@@ -40,4 +40,8 @@ export class ImageService {
   deleteImage(id: string): Observable<any> {
     return this.http.delete(`${API_URL}` + `image/${id}`, { responseType: 'text' });
   }
+
+  downloadImage(id: string): Observable<any> {
+    return this.http.get(`${API_URL}` + `file/${id}`, httpOptions); 
+  }
 }

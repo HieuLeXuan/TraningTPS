@@ -39,4 +39,8 @@ public class UserService {
 	public Stream<User> getAllUsers() {
 		return userRepository.findAll().stream();
 	}
+	
+	public void deleteUser(Long id) throws IOException {
+		userRepository.deleteById(id);
+	}
 }
