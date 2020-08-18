@@ -20,6 +20,13 @@ export class DetailUserAdComponent implements OnInit {
     this.permissions = this.permissionService.getListPermissions();
   }
 
+  getIdPermissionChecked() {
+    this.permissions.forEach(permission => {
+      if(permission.checked === true) {
+        return permission.id;
+      }
+    })
+  }
   delete(): void {
     this.userService.deleteUser(this.user.id).subscribe(
       response => {

@@ -21,7 +21,7 @@ export class ImageService {
     formData.append('file', file);
     formData.append('description', description);
 
-    const req = new HttpRequest('POST', API_URL + 'upload', formData, {
+    const req = new HttpRequest('POST', API_URL + 'images/upload', formData, {
       reportProgress: true,
       responseType: 'json',
     });
@@ -30,18 +30,18 @@ export class ImageService {
   }
 
   getListImages(): Observable<any> {
-    return this.http.get(API_URL + 'files');
+    return this.http.get(API_URL + 'images');
   }
 
   updateImage(image, id: string): Observable<any> {
-    return this.http.put(`${API_URL}` + `image/${id}`, image, httpOptions)
+    return this.http.put(`${API_URL}` + `images/${id}`, image, httpOptions)
   }
 
   deleteImage(id: string): Observable<any> {
-    return this.http.delete(`${API_URL}` + `image/${id}`, { responseType: 'text' });
+    return this.http.delete(`${API_URL}` + `images/${id}`, { responseType: 'text' });
   }
 
   downloadImage(id: string): Observable<any> {
-    return this.http.get(`${API_URL}` + `file/${id}`, httpOptions); 
+    return this.http.get(`${API_URL}` + `images/${id}`, httpOptions); 
   }
 }

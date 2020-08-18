@@ -51,7 +51,7 @@ public class UserController {
 	}
 
 	// update current user.
-	@PutMapping("/user")
+	@PutMapping("/users")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public ResponseEntity<ResponseMessage> updateUser(@RequestBody User user, Principal principal) {
 		String message = "";
@@ -65,7 +65,7 @@ public class UserController {
 		}
 	}
 	
-	@DeleteMapping("user/{id}")
+	@DeleteMapping("users/{id}")
 	public void deleteImage(@PathVariable Long id) throws IOException {
 		userService.deleteUser(id);
 	}

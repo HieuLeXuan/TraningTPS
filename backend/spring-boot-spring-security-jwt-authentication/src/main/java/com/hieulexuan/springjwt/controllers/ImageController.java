@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,12 +39,11 @@ public class ImageController {
 	@Autowired
 	UserRepository userRepository;
 
-//	http://code-addict.pl/permission-evaluator-boot2/
-	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'upload')")
-	@GetMapping("/files")
+	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'see')")
+	@GetMapping("/images")
 	public ResponseEntity<List<ResponseImage>> getListFiles() {
 		List<ResponseImage> images = imageService.getAllFiles().map(dbImage -> {
-			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/file/")
+			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/images/")
 					.path(dbImage.getId()).toUriString();
 
 			return new ResponseImage(dbImage.getId(), dbImage.getName(), imageDownloadUri, dbImage.getData(),
@@ -53,18 +53,21 @@ public class ImageController {
 		return ResponseEntity.status(HttpStatus.OK).body(images);
 	}
 
-	@GetMapping("/file/{id}")
+	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'download')")
+	@GetMapping("/images/{id}")
 	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
 		Image image = imageService.getFile(id);
 
-		return ResponseEntity.ok()
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
-				.body(image.getData());
+		if (image != null) {
+			return ResponseEntity.ok()
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
+					.body(image.getData());
+		}
+		return (ResponseEntity<byte[]>) ResponseEntity.status(HttpStatus.EXPECTATION_FAILED);
 	}
 
-//	upload images.
-	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'see')")
-	@PostMapping("/upload")
+	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'upload')")
+	@PostMapping("images/upload")
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file,
 			@RequestParam String description, Principal principal) {
 		String username = principal.getName();
@@ -80,7 +83,7 @@ public class ImageController {
 		}
 	}
 
-	@PutMapping("image/{id}")
+	@PutMapping("images/{id}")
 	public ResponseEntity<ResponseMessage> updateImage(@RequestBody Image image, @PathVariable String id) {
 		String message = "";
 		try {
@@ -93,7 +96,7 @@ public class ImageController {
 		}
 	}
 
-	@DeleteMapping("image/{id}")
+	@DeleteMapping("images/{id}")
 	public void deleteImage(@PathVariable String id) throws IOException {
 		imageService.deleteImage(id);
 	}

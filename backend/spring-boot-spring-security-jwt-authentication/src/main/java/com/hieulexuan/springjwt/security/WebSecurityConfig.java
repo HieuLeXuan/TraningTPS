@@ -1,6 +1,7 @@
 package com.hieulexuan.springjwt.security;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -56,21 +57,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Bean
-	public CorsConfigurationSource corsConfigurationSource() {
-		final CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("*"));
-		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS"));
-		configuration.setAllowCredentials(true);
-		configuration.setAllowedHeaders(Arrays.asList("Content-Type", "content-type", "x-requested-with",
-				"Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "x-auth-token", "x-app-id", "Origin",
-				"Accept", "X-Requested-With", "Access-Control-Request-Method", "Access-Control-Request-Headers"));
-		configuration.addAllowedOrigin("*");
-		configuration.addAllowedHeader("*");
-		configuration.addAllowedMethod("*");
-		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", configuration);
-		return source;
-	}
+    public CorsConfigurationSource corsConfigurationSource() {
+        final CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Collections.singletonList("*"));
+        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -85,23 +81,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.authorizeRequests()
 						
 //						login.
-						.antMatchers("/signin").permitAll()
-						.antMatchers("/signup").permitAll()
+						.antMatchers("/logins/**").permitAll()
 						
 //						show image.
-//						.antMatchers("/files").permitAll()						//see images
+						.antMatchers("/images").permitAll()						//see images
 						
 //						download images	
-						.antMatchers("/file/**").permitAll()
+						.antMatchers("/images/**").permitAll()					//download image
 						
 //						get list user.
-						.antMatchers("/users").hasAnyRole("ADMIN")
+						.antMatchers("/users").hasAnyRole("ADMIN", "USER")
 
 //						upload image.
-//						.antMatchers("/upload").permitAll() 					// upload image
-		
-//						update current user.
-						.antMatchers("/user").hasAnyRole("ADMIN", "USER")
+						.antMatchers("/upload").permitAll()						// upload image
 		
 						.anyRequest().authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -26,9 +26,19 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 		User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(username));
 
 		Set<Permission> permissions = user.getPermissions();
-		String permissionName = ((String) targetDomainObject) + "_" + ((String) permission);
 
+		String permissionName = ((String) targetDomainObject) + "_" + ((String) permission);
+		
+		for (Permission permission2 : permissions) {
+			String permissionName2 = permission2.getName();
+			
+			if(permission2.getName().equals(permissionName)) {
+				return true;
+			}
+		}
+		
 		return false;
+
 	}
 
 	@Override
