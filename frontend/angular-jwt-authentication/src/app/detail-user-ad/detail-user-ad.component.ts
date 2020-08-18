@@ -12,12 +12,27 @@ import { UserService } from '../_services/user.service';
 export class DetailUserAdComponent implements OnInit {
   @Input() user: User;
 
-  permissions: Observable<any>;
+  permissions: any;
 
   constructor(private permissionService: PermissionService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.permissions = this.permissionService.getListPermissions();
+    this.permissionService.getListPermissions().subscribe(
+      response => {
+        // this.permissions = response;
+        console.log(response)
+      }
+    )
+  }
+
+  getIdPermissionChecked() {
+    console.log(this.permissions)
+    this.permissions.forEach(permission => {
+      if(permission.checked === true) {
+        // return permission.id;
+        console.log(permission.id)
+      }
+    })
   }
 
   delete(): void {

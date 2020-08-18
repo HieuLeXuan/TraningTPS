@@ -1,6 +1,7 @@
 package com.hieulexuan.springjwt.service;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,13 @@ public class UserService {
 	public void deleteUser(Long id) throws IOException {
 		userRepository.deleteById(id);
 	}
+	
+	public Optional<User> findById(Long userid) {
+		return userRepository.findById(userid);
+	}
+
+	public void save(User user) {
+		userRepository.save(user);
+	}
+	
 }

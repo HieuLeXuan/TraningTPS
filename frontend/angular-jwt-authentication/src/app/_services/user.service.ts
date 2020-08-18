@@ -16,11 +16,11 @@ export class UserService {
   }
 
   updateUser(user): Observable<any> {
-    return this.http.put(API_URL + 'user', user);
+    return this.http.put(API_URL + 'users', user);
   }
 
   deleteUser(id: number): Observable<any> {
-    return this.http.delete(`${API_URL}` + `user/${id}`);
+    return this.http.delete(`${API_URL}` + `users/${id}`);
   }
   
 }
