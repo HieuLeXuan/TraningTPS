@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <label><i class="fas fa-arrows-alt fa-xs prefix grey-text"></i> Permissions:</label>
-    <div *ngFor="let permission of permissions | async">
+    <div *ngFor="let permission of permissions">
       <label>
         <input id="checkbox" type="checkbox" ng-model="permission.name" [(ngModel)]="permission.checked" />
         {{permission.name}}
@@ -29,7 +29,7 @@
   </div>
 
   <div>
-    <button class="btn btn-lg btn-success" style="font-size: 15px;" (click) = "getIdPermissionChecked()">
+    <button class="btn btn-lg btn-success" style="font-size: 15px;" (click) = "save()">
       <i class="fa fa-save fa-1x"></i> Save
     </button>
     <button class="btn btn-lg btn-danger" style="margin-left: 10px; font-size: 15px;" (click)="delete()">

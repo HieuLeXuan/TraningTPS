@@ -23,8 +23,8 @@ public class PermissionService {
 		return permissionRepository.findAll().stream();
 	}
 
-	public Permission findById(Integer permissionid) {
-		return permissionRepository.findById(permissionid).orElse(null);
+	public Optional<Permission> findById(Long permissionid) {
+		return permissionRepository.findById(permissionid);
 	}
 	
 }

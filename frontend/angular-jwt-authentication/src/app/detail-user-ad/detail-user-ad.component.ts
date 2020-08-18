@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../model/users';
+import { User } from '../model/user';
 import { PermissionService } from '../_services/permission.service';
 import { Observable } from 'rxjs';
 import { UserService } from '../_services/user.service';
+import { User_Permission } from '../model/user_permission';
 
 @Component({
   selector: 'app-detail-user-ad',
@@ -14,26 +15,36 @@ export class DetailUserAdComponent implements OnInit {
 
   permissions: any;
 
+  u_p : User_Permission;
+
   constructor(private permissionService: PermissionService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.permissionService.getListPermissions().subscribe(
       response => {
-        // this.permissions = response;
-        console.log(response)
+        this.permissions = response;
+        // console.log(this.permissions)s
       }
-    )
+    );
   }
 
-  getIdPermissionChecked() {
-    console.log(this.permissions)
+  getIdPermissionChecked(): number {
     this.permissions.forEach(permission => {
-      if(permission.checked === true) {
-        // return permission.id;
-        console.log(permission.id)
+      if (permission.checked === true) {
+        return permission.id;
+        // console.log(permission.id)
       }
-    })
+    });
+    return 1;
   }
+
+save() : void {
+  this.permissionService.setPermissions(this.u_p, this.user.id, this.getIdPermissionChecked()).subscribe(
+    response =>{
+      console.log("ok");
+    }
+  );
+}
 
   delete(): void {
     this.userService.deleteUser(this.user.id).subscribe(

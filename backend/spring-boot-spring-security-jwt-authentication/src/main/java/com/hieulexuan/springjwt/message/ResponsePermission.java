@@ -2,7 +2,7 @@ package com.hieulexuan.springjwt.message;
 
 public class ResponsePermission {
 
-	private int id;
+	private long id;
 	private String name;
 	private boolean checked;
 
@@ -11,18 +11,18 @@ public class ResponsePermission {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ResponsePermission(int id, String name) {
+	public ResponsePermission(long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.checked = true;
+		this.checked = false;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

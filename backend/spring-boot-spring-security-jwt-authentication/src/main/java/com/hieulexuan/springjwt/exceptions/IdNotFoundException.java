@@ -10,4 +10,8 @@ public class IdNotFoundException extends RuntimeException{
 		super("user not found by id " + id);
 	}
 
+	public IdNotFoundException(Long id) {
+		super("user not found by id " + id);
+	}
+	
 }

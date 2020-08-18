@@ -4,7 +4,7 @@ import { ImageService } from '../_services/image.service';
 import { Observable } from 'rxjs';
 import { UserService } from '../_services/user.service';
 import { Image } from '../model/image';
-import { User } from '../model/users';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-board-admin',
