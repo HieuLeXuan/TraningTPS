@@ -49,7 +49,7 @@ public class LoginController {
 	@Autowired
 	private JwtUtils jwtUtils;
 
-	@PostMapping("signin")
+	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
 		Authentication authentication = authenticationManager.authenticate(
@@ -67,7 +67,7 @@ public class LoginController {
 				userDetails.getPhone(), userDetails.getLocation()));
 	}
 
-	@PostMapping("signup")
+	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));

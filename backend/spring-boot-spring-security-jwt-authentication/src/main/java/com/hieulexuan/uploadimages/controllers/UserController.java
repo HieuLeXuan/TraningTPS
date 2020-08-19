@@ -53,7 +53,7 @@ public class UserController {
 		}
 	}
 
-	@DeleteMapping("users/{id}")
+	@DeleteMapping("/users/{id}")
 	public void deleteImage(@PathVariable Long id) throws IOException {
 		userService.deleteUser(id);
 	}

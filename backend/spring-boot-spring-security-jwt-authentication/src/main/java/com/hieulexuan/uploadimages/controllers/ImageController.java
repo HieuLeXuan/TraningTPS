@@ -62,7 +62,7 @@ public class ImageController {
 	}
 
 	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'upload')")
-	@PostMapping("images")
+	@PostMapping("/images")
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file,
 			@RequestParam String description, Principal principal) {
 		String username = principal.getName();
@@ -78,7 +78,7 @@ public class ImageController {
 		}
 	}
 
-	@PutMapping("images/{id}")
+	@PutMapping("/images/{id}")
 	public ResponseEntity<ResponseMessage> updateImage(@RequestBody Image image, @PathVariable String id) {
 		String message = "";
 		try {
@@ -91,7 +91,7 @@ public class ImageController {
 		}
 	}
 
-	@DeleteMapping("images/{id}")
+	@DeleteMapping("/images/{id}")
 	public void deleteImage(@PathVariable String id) throws IOException {
 		imageService.deleteImage(id);
 	}

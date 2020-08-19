@@ -45,7 +45,7 @@ public class User {
 	private Set<Role> roles = new HashSet<>();
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permisstion_id"))
+	@JoinTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
 	private Set<Permission> permissions = new HashSet<>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")

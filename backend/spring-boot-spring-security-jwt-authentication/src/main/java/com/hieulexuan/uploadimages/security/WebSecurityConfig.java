@@ -1,7 +1,6 @@
 package com.hieulexuan.uploadimages.security;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -72,22 +71,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-
-//						login.
-				.antMatchers("/logins/**").permitAll()
-
-//						show image.
-				.antMatchers("/images").permitAll() 				// see images
-
-//						download images	
-				.antMatchers("/images/**").permitAll() 				// download image
-
-//						get list user.
+				.antMatchers("/login/**").permitAll()
+				.antMatchers("/images").permitAll() 	// see images, upload images
+				.antMatchers("/images/**").permitAll()	// download image
 				.antMatchers("/users").permitAll()
-
-//						upload image.
-				.antMatchers("/upload").permitAll() 				// upload image
-
 				.anyRequest().authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
