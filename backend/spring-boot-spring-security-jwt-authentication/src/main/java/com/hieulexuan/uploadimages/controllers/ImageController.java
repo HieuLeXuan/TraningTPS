@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,14 +50,14 @@ public class ImageController {
 		return ResponseEntity.status(HttpStatus.OK).body(images);
 	}
 
-//	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'download')")
+	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN'))")
 	@GetMapping("/images/{id}")
-	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
+	public ResponseEntity<Resource> getFile(@PathVariable String id) {
 		Image image = imageService.getFile(id);
 
-		return ResponseEntity.ok()
+		return ResponseEntity.ok().contentType(MediaType.parseMediaType(image.getType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
-				.body(image.getData());
+				.body(new ByteArrayResource(image.getData()));
 
 	}
 

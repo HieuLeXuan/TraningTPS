@@ -32,7 +32,7 @@ import com.hieulexuan.uploadimages.security.jwt.JwtUtils;
 import com.hieulexuan.uploadimages.security.services.UserDetailsImpl;
 
 @RestController
-@RequestMapping("/logins")
+@RequestMapping("/login")
 public class LoginController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
