@@ -10,7 +10,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,24 +24,18 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.hieulexuan.springjwt.message.ResponseImage;
 import com.hieulexuan.springjwt.message.ResponseMessage;
 import com.hieulexuan.springjwt.models.Image;
-import com.hieulexuan.springjwt.repository.UserRepository;
 import com.hieulexuan.springjwt.service.ImageService;
-
-import lombok.var;
 
 @RestController
 public class ImageController {
 
 	@Autowired
-	ImageService imageService;
-
-	@Autowired
-	UserRepository userRepository;
+	private ImageService imageService;
 
 	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'see')")
 	@GetMapping("/images")
 	public ResponseEntity<List<ResponseImage>> getListFiles() {
-		
+
 		List<ResponseImage> images = imageService.getAllFiles().map(dbImage -> {
 			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/images/")
 					.path(dbImage.getId()).toUriString();
@@ -53,7 +46,7 @@ public class ImageController {
 
 		return ResponseEntity.status(HttpStatus.OK).body(images);
 	}
-	
+
 	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'download')")
 	@GetMapping("/images/{id}")
 	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
@@ -66,7 +59,7 @@ public class ImageController {
 	}
 
 	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'upload')")
-	@PostMapping("images/upload")
+	@PostMapping("images")
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file,
 			@RequestParam String description, Principal principal) {
 		String username = principal.getName();

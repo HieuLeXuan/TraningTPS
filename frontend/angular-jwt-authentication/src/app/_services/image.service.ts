@@ -21,7 +21,7 @@ export class ImageService {
     formData.append('file', file);
     formData.append('description', description);
 
-    const req = new HttpRequest('POST', API_URL + 'images/upload', formData, {
+    const req = new HttpRequest('POST', API_URL + 'images', formData, {
       reportProgress: true,
       responseType: 'json',
     });
