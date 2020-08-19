@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,7 +28,8 @@ import com.hieulexuan.springjwt.models.Image;
 import com.hieulexuan.springjwt.repository.UserRepository;
 import com.hieulexuan.springjwt.service.ImageService;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+import lombok.var;
+
 @RestController
 public class ImageController {
 
@@ -42,6 +42,7 @@ public class ImageController {
 	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'see')")
 	@GetMapping("/images")
 	public ResponseEntity<List<ResponseImage>> getListFiles() {
+		
 		List<ResponseImage> images = imageService.getAllFiles().map(dbImage -> {
 			String imageDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/images/")
 					.path(dbImage.getId()).toUriString();
@@ -52,18 +53,16 @@ public class ImageController {
 
 		return ResponseEntity.status(HttpStatus.OK).body(images);
 	}
-
+	
 	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'download')")
 	@GetMapping("/images/{id}")
 	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
 		Image image = imageService.getFile(id);
 
-		if (image != null) {
-			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
-					.body(image.getData());
-		}
-		return (ResponseEntity<byte[]>) ResponseEntity.status(HttpStatus.EXPECTATION_FAILED);
+		return ResponseEntity.ok()
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
+				.body(image.getData());
+
 	}
 
 	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'upload')")

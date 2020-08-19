@@ -24,7 +24,6 @@ import com.hieulexuan.springjwt.models.User;
 import com.hieulexuan.springjwt.repository.UserRepository;
 import com.hieulexuan.springjwt.service.UserService;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class UserController {
 

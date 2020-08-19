@@ -10854,6 +10854,7 @@ label {
 
 
 /* user detail ad */
-#checkbox {
+#radiobox {
   margin-left: 45px;
+  margin-bottom: 20px;
 }

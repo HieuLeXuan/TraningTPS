@@ -4,7 +4,7 @@ public class ResponsePermission {
 
 	private long id;
 	private String name;
-	private boolean checked;
+//	private boolean checked;
 
 	public ResponsePermission() {
 		super();
@@ -15,7 +15,7 @@ public class ResponsePermission {
 		super();
 		this.id = id;
 		this.name = name;
-		this.checked = false;
+//		this.checked = false;
 	}
 
 	public long getId() {
@@ -34,14 +34,12 @@ public class ResponsePermission {
 		this.name = name;
 	}
 
-	public boolean isChecked() {
-		return checked;
-	}
-
-	public void setChecked(boolean checked) {
-		this.checked = checked;
-	}
+//	public boolean isChecked() {
+//		return checked;
+//	}
+//
+//	public void setChecked(boolean checked) {
+//		this.checked = checked;
+//	}
 	
-	
-
 }

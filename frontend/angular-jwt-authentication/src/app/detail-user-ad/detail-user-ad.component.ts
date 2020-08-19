@@ -14,8 +14,8 @@ export class DetailUserAdComponent implements OnInit {
   @Input() user: User;
 
   permissions: any;
-
   u_p : User_Permission;
+  permissionId: number;
 
   constructor(private permissionService: PermissionService, private userService: UserService) { }
 
@@ -23,26 +23,25 @@ export class DetailUserAdComponent implements OnInit {
     this.permissionService.getListPermissions().subscribe(
       response => {
         this.permissions = response;
-        // console.log(this.permissions)s
       }
     );
   }
 
-  getIdPermissionChecked(): number {
-    this.permissions.forEach(permission => {
-      if (permission.checked === true) {
-        return permission.id;
-        // console.log(permission.id)
-      }
-    });
-    return 1;
-  }
+  // getIdPermissionChecked() {
+  //   this.permissions.forEach(permission => {
+  //     if (permission.checked === true) {
+  //       //return permission.id;
+  //       console.log(permission.id)
+  //     }
+  //   });
+  //   // return -1;
+  // }
 
 save() : void {
-  this.permissionService.setPermissions(this.u_p, this.user.id, this.getIdPermissionChecked()).subscribe(
+  this.permissionService.setPermissions(this.u_p, this.user.id, this.permissionId).subscribe(
     response =>{
-      console.log("ok");
-    }
+      this.reload();
+    } 
   );
 }
 

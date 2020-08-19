@@ -57,45 +57,38 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        final CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("*"));
-        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
-        configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+	public CorsConfigurationSource corsConfigurationSource() {
+		final CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:8081, http://localhost:8082, http://localhost:8083"));
+		configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
+		configuration.setAllowCredentials(true);
+		configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and()
-					.csrf().disable()
-					.exceptionHandling()
-					.authenticationEntryPoint(unauthorizedHandler)
-				.and()
-					.sessionManagement()
-					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
-					.authorizeRequests()
-						
+		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
+
 //						login.
-						.antMatchers("/logins/**").permitAll()
-						
+				.antMatchers("/logins/**").permitAll()
+
 //						show image.
-						.antMatchers("/images").permitAll()						//see images
-						
+				.antMatchers("/images").permitAll() // see images
+
 //						download images	
-						.antMatchers("/images/**").permitAll()					//download image
-						
+				.antMatchers("/images/**").permitAll() // download image
+
 //						get list user.
-						.antMatchers("/users").hasAnyRole("ADMIN", "USER")
+				.antMatchers("/users").permitAll()
 
 //						upload image.
-						.antMatchers("/upload").permitAll()						// upload image
-		
-						.anyRequest().authenticated();
+				.antMatchers("/upload").permitAll() // upload image
+
+				.anyRequest().authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 }

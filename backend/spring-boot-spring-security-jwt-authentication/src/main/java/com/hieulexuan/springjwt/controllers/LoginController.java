@@ -32,7 +32,6 @@ import com.hieulexuan.springjwt.repository.UserRepository;
 import com.hieulexuan.springjwt.security.jwt.JwtUtils;
 import com.hieulexuan.springjwt.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/logins")
 public class LoginController {
