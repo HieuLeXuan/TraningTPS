@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hieulexuan.uploadimages.exceptions.IdNotFoundException;
+import com.hieulexuan.uploadimages.message.ResponseMessage;
 import com.hieulexuan.uploadimages.message.ResponsePermission;
 import com.hieulexuan.uploadimages.models.Permission;
 import com.hieulexuan.uploadimages.models.User;
@@ -38,14 +39,21 @@ public class PermissionController {
 	}
 
 	@PostMapping("/permissions")
-	public void setPermissions(@RequestParam("user_id") Long userid, @RequestParam("permission_id") Long permissionid) {
+	public ResponseEntity<ResponseMessage> setPermissions(@RequestParam("user_id") Long userid, @RequestParam("permission_id") Long permissionid) {
+		String message = "";
+		
 		User user = userService.findById(userid).orElseThrow(() -> new IdNotFoundException(userid));
 		Permission permission = permissionService.findById(permissionid)
 				.orElseThrow(() -> new IdNotFoundException(permissionid));
-
 		user.getPermissions().add(permission);
-
-		// save user
-		userService.save(user);
+		
+		try {
+			userService.save(user);
+			message = "Set the permission successfully!";
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+		} catch (Exception e) {
+			message = "Could not set the permission !";
+			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+		}
 	}
 }
