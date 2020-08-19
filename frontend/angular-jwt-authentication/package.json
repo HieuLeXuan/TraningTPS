@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start:prod": "ng serve -c=prod --port=4200",
     "start:dev": "ng serve -c=dev --port=4201",
-    "start:qc": "ng serve -c=qa --port=4202",
+    "start:qc": "ng serve -c=qc --port=4202",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

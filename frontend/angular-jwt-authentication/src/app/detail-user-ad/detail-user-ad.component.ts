@@ -8,53 +8,41 @@ import { User_Permission } from '../model/user_permission';
 @Component({
   selector: 'app-detail-user-ad',
   templateUrl: './detail-user-ad.component.html',
-  styleUrls: ['../../assets/css/styles.css']
+  styleUrls: ['../../assets/css/styles.css'],
 })
 export class DetailUserAdComponent implements OnInit {
   @Input() user: User;
 
   permissions: any;
-  u_p : User_Permission;
+  u_p: User_Permission;
   permissionId: number;
 
-  constructor(private permissionService: PermissionService, private userService: UserService) { }
+  constructor(
+    private permissionService: PermissionService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.permissionService.getListPermissions().subscribe(
-      response => {
-        this.permissions = response;
-      }
-    );
+    this.permissionService.getListPermissions().subscribe((response) => {
+      this.permissions = response;
+    });
   }
 
-  // getIdPermissionChecked() {
-  //   this.permissions.forEach(permission => {
-  //     if (permission.checked === true) {
-  //       //return permission.id;
-  //       console.log(permission.id)
-  //     }
-  //   });
-  //   // return -1;
-  // }
-
-save() : void {
-  this.permissionService.setPermissions(this.u_p, this.user.id, this.permissionId).subscribe(
-    response =>{
-      this.reload();
-    } 
-  );
-}
+  save(): void {
+    this.permissionService
+      .setPermissions(this.u_p, this.user.id, this.permissionId)
+      .subscribe((response) => {
+        this.reload();
+      });
+  }
 
   delete(): void {
-    this.userService.deleteUser(this.user.id).subscribe(
-      response => {
-        this.reload();
-      }
-    );
+    this.userService.deleteUser(this.user.id).subscribe((response) => {
+      this.reload();
+    });
   }
 
   reload() {
     window.location.reload();
   }
-
 }
