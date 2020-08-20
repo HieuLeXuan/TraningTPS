@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ValidateEqualModule } from 'ng-validate-equal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -14,8 +16,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { DetailImgComponent } from './detail-img/detail-img.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailImgAdComponent } from './detail-img-ad/detail-img-ad.component';
 import { DetailUserAdComponent } from './detail-user-ad/detail-user-ad.component';
 import { NotfoundComponent } from './notfound/notfound.component';

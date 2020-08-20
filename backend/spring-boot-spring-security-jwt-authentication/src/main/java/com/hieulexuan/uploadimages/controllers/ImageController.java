@@ -50,7 +50,7 @@ public class ImageController {
 		return ResponseEntity.status(HttpStatus.OK).body(images);
 	}
 
-	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN'))")
+	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'download')")
 	@GetMapping("/images/{id}")
 	public ResponseEntity<Resource> getFile(@PathVariable String id) {
 		Image image = imageService.getFile(id);
@@ -58,7 +58,6 @@ public class ImageController {
 		return ResponseEntity.ok().contentType(MediaType.parseMediaType(image.getType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
 				.body(new ByteArrayResource(image.getData()));
-
 	}
 
 	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'upload')")
