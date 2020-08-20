@@ -19,7 +19,6 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 	@Autowired
 	private UserRepository userRepository;
 
-	// hasPermission('images', 'upload')
 	@Override
 	public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
 		String username = authentication.getName();
@@ -30,7 +29,6 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 		String permissionName = ((String) targetDomainObject) + "_" + ((String) permission);
 		
 		for (Permission permission2 : permissions) {
-			String permissionName2 = permission2.getName();
 			
 			if(permission2.getName().equals(permissionName)) {
 				return true;

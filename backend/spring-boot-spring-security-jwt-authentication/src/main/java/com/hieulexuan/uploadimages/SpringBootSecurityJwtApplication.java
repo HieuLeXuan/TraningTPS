@@ -12,7 +12,7 @@ import com.hieulexuan.uploadimages.service.ImageService;
 public class SpringBootSecurityJwtApplication implements CommandLineRunner{
 
 	@Resource
-	ImageService storageService;
+	private ImageService imageService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootSecurityJwtApplication.class, args);
@@ -20,7 +20,7 @@ public class SpringBootSecurityJwtApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		storageService.init();
+		imageService.init();
 	}
 
 }
