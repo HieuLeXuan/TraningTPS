@@ -1,7 +1,3 @@
-create database db_images;
-
-use db_images;
-
 INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 
