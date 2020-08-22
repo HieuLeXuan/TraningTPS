@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
-import { Observable } from 'rxjs';
 import { User } from '../model/user';
 
 @Component({
@@ -11,7 +10,7 @@ import { User } from '../model/user';
 })
 export class ProfileComponent implements OnInit {
   
-  currentUser: any;
+  currentUser: User;
   copyOfCurrentUser: any;
   textProfile = false;
 
@@ -19,8 +18,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
-    this.currentUser.password = '';
     this.copyOfCurrentUser = { ...this.currentUser };
+    console.log("ok");
   }
 
   save(): void {

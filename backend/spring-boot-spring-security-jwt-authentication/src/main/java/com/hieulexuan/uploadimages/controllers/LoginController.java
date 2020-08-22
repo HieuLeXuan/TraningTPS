@@ -34,19 +34,19 @@ import com.hieulexuan.uploadimages.security.services.UserDetailsImpl;
 @RestController
 @RequestMapping("/login")
 public class LoginController {
-	@Autowired
+	@Autowired(required = false)
 	private AuthenticationManager authenticationManager;
 
-	@Autowired
+	@Autowired(required = false)
 	private UserRepository userRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private RoleRepository roleRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private PasswordEncoder encoder;
 
-	@Autowired
+	@Autowired(required = false)
 	private JwtUtils jwtUtils;
 
 	@PostMapping("/signin")

@@ -32,7 +32,7 @@ import com.hieulexuan.uploadimages.service.ImageService;
 @RestController
 public class ImageController {
 
-	@Autowired
+	@Autowired(required = false)
 	private ImageService imageService;
 
 	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'see')")

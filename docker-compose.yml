@@ -1,28 +1,29 @@
 version: '3'
 services:
 
-  test-mysql:
+  upload-image-mysql:
     image: "mysql:latest"
     container_name: upload-image-mysql
     ports:
-      - 6603:3306
+      - 3306:3306
     environment:
       - MYSQL_DATABASE=db_images
       - MYSQL_USER=root
-      - MYSQL_PASSWORD=Nguyenle+-
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_PASSWORD=123456
 
-  backend:
+  upload-image-app:
     build: ./backend/spring-boot-spring-security-jwt-authentication
     container_name: upload-image-app
     ports:
-      - 8081:8080
+      - 9000:8090
     links:
-      - test-mysql
+      - upload-image-mysql
 
-  frontend:
+  upload-image-ui:
     build: ./frontend/angular-jwt-authentication
     container_name: upload-image-ui
     ports:
-      - 4200:80
+      - 4201:80
     links:
-      - backend
+      - upload-image-app

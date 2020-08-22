@@ -13,10 +13,10 @@ import com.hieulexuan.uploadimages.repository.UserRepository;
 @Service
 public class PermissionService {
 
-	@Autowired
+	@Autowired(required = false)
 	PermissionRepository permissionRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	UserRepository userRepository;
 
 	public Stream<Permission> getAllPermissions() {

@@ -22,10 +22,10 @@ import com.hieulexuan.uploadimages.service.UserService;
 @RestController
 public class PermissionController {
 
-	@Autowired
+	@Autowired(required = false)
 	private PermissionService permissionService;
 
-	@Autowired
+	@Autowired(required = false)
 	private UserService userService;
 
 	@GetMapping("/permissions")

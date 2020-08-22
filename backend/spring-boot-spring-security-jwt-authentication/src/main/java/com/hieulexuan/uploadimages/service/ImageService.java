@@ -21,10 +21,10 @@ import com.hieulexuan.uploadimages.repository.UserRepository;
 @Service
 public class ImageService {
 
-	@Autowired
+	@Autowired(required = false)
 	private ImageRepository imageRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private UserRepository userRepository;
 
 	private final Path root = Paths.get("uploads");

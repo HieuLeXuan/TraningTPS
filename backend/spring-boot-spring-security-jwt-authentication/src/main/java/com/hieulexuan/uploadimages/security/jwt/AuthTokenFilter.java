@@ -20,10 +20,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.hieulexuan.uploadimages.security.services.UserDetailsServiceImpl;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
-	@Autowired
+
+	@Autowired(required = false)
 	private JwtUtils jwtUtils;
 
-	@Autowired
+	@Autowired(required = false)
 	private UserDetailsServiceImpl userDetailsService;
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);

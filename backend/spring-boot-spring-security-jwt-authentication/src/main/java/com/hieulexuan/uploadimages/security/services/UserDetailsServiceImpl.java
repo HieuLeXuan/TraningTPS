@@ -12,7 +12,8 @@ import com.hieulexuan.uploadimages.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-	@Autowired
+
+	@Autowired(required = false)
 	UserRepository userRepository;
 
 	@Override

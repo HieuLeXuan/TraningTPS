@@ -28,10 +28,10 @@ import com.hieulexuan.uploadimages.security.services.UserDetailsServiceImpl;
 @EnableGlobalMethodSecurity(securedEnabled = true, jsr250Enabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
+	@Autowired(required = false)
 	UserDetailsServiceImpl userDetailsService;
 
-	@Autowired
+	@Autowired(required = false)
 	private AuthEntryPointJwt unauthorizedHandler;
 
 	@Bean
@@ -74,7 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/login/**").permitAll()
 				.antMatchers("/images").permitAll() 	// see images, upload images
 				.antMatchers("/images/**").permitAll()	// download image
-				.antMatchers("/users").permitAll()
+				.antMatchers("/users").hasAnyRole("ADMIN")
 				.anyRequest().authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}

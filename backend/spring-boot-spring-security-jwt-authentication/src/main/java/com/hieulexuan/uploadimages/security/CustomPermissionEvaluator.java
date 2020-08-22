@@ -16,7 +16,7 @@ import com.hieulexuan.uploadimages.repository.UserRepository;
 @Component
 public class CustomPermissionEvaluator implements PermissionEvaluator {
 
-	@Autowired
+	@Autowired(required = false)
 	private UserRepository userRepository;
 
 	@Override

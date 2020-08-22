@@ -24,7 +24,7 @@ import com.hieulexuan.uploadimages.service.UserService;
 @RestController
 public class UserController {
 
-	@Autowired
+	@Autowired(required = false)
 	private UserService userService;
 
 	@GetMapping("/users")

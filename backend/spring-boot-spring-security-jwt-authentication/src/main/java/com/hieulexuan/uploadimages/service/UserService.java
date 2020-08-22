@@ -15,10 +15,10 @@ import com.hieulexuan.uploadimages.repository.UserRepository;
 @Service
 public class UserService {
 
-	@Autowired
+	@Autowired(required = false)
 	private UserRepository userRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	PasswordEncoder encoder;
 
 	public User updateUser(User user, String username) throws IOException {
@@ -27,9 +27,6 @@ public class UserService {
 				.orElseThrow(() -> new UserNotFoundException(username));
 
 		currentUser.setUsername(user.getUsername());
-//		if (currentUser.getPassword() != "") {
-//			currentUser.setPassword(encoder.encode(user.getPassword()));
-//		}
 		currentUser.setEmail(user.getEmail());
 		currentUser.setFirstname(user.getFirstname());
 		currentUser.setLastname(user.getLastname());
