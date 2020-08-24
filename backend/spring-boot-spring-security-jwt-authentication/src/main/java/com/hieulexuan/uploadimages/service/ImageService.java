@@ -27,15 +27,15 @@ public class ImageService {
 	@Autowired(required = false)
 	private UserRepository userRepository;
 
-	private final Path root = Paths.get("uploads");
+//	private final Path root = Paths.get("uploads");
 
-	public void init() {
-		try {
-			Files.createDirectories(root);
-		} catch (Exception e) {
-			throw new RuntimeException("Could not initialize folder for upload!");
-		}
-	}
+//	public void init() {
+//		try {
+//			Files.createDirectories(root);
+//		} catch (Exception e) {
+//			throw new RuntimeException("Could not initialize folder for upload!");
+//		}
+//	}
 
 	public Image store(MultipartFile file, String description, String username) throws IOException {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -43,10 +43,9 @@ public class ImageService {
 
 		User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(username));
 
-		Image image = new Image(fileName, file.getContentType(), file.getBytes(), description, date, root.toString(),
-				user);
+		Image image = new Image(fileName, file.getContentType(), file.getBytes(), description, date, user);
 
-		Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
+//		Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
 		return imageRepository.save(image);
 	}
 

@@ -74,7 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/login/**").permitAll()
 				.antMatchers("/images").permitAll() 	// see images, upload images
 				.antMatchers("/images/**").permitAll()	// download image
-				.antMatchers("/users").hasAnyRole("ADMIN")
+				.antMatchers("/users").hasAnyRole("ADMIN", "USER")
 				.anyRequest().authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}

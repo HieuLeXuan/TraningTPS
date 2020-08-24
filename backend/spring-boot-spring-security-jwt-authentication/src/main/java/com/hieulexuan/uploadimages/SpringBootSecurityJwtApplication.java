@@ -9,7 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.hieulexuan.uploadimages.service.ImageService;
 
 @SpringBootApplication
-public class SpringBootSecurityJwtApplication implements CommandLineRunner {
+public class SpringBootSecurityJwtApplication {
+//	implements CommandLineRunner
 
 	@Resource
 	private ImageService imageService;
@@ -18,9 +19,9 @@ public class SpringBootSecurityJwtApplication implements CommandLineRunner {
 		SpringApplication.run(SpringBootSecurityJwtApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		imageService.init();
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//		imageService.init();
+//	}
 
 }

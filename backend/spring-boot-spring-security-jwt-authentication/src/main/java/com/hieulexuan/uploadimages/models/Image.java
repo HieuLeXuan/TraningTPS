@@ -1,14 +1,10 @@
 package com.hieulexuan.uploadimages.models;
 
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "images")
@@ -17,6 +13,8 @@ public class Image {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@Column(name="id", length=36)
+	@Length(min=36, max=36)
 	private String id;
 
 	@Lob
@@ -26,7 +24,7 @@ public class Image {
 	private String type;
 	private String description;
 	private Date createDate;
-	private String path;
+//	private String path;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -37,14 +35,14 @@ public class Image {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Image(String name, String type, byte[] data, String descrition, Date createDate, String path, User user) {
+	public Image(String name, String type, byte[] data, String descrition, Date createDate, User user) {
 		super();
 		this.name = name;
 		this.type = type;
 		this.data = data;
 		this.description = descrition;
 		this.createDate = createDate;
-		this.path = path;
+//		this.path = path;
 		this.user = user;
 	}
 
@@ -96,13 +94,13 @@ public class Image {
 		this.id = id;
 	}
 
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
+//	public String getPath() {
+//		return path;
+//	}
+//
+//	public void setPath(String path) {
+//		this.path = path;
+//	}
 
 	public User getUser() {
 		return user;
