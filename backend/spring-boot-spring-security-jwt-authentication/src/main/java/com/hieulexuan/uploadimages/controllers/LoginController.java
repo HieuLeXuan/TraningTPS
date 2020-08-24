@@ -61,9 +61,12 @@ public class LoginController {
 		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
 				.collect(Collectors.toList());
-
+		
+		List<String> permissions = userDetails.getAuthorities2().stream().map(item -> item.getAuthority())
+				.collect(Collectors.toList());
+		
 		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(),
-				userDetails.getEmail(), roles, userDetails.getFirstname(), userDetails.getLastname(),
+				userDetails.getEmail(), roles, permissions, userDetails.getFirstname(), userDetails.getLastname(),
 				userDetails.getPhone(), userDetails.getLocation()));
 	}
 

@@ -9,12 +9,13 @@ public class JwtResponse {
 	private String username;
 	private String email;
 	private List<String> roles;
+	private List<String> permissions;
 	private String firstname;
 	private String lastname;
 	private String phone;
 	private String location;
 
-	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, String firstname,
+	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, List<String> permissions, String firstname,
 			String lastname, String phone, String location) {
 		super();
 		this.token = accessToken;
@@ -26,6 +27,7 @@ public class JwtResponse {
 		this.phone = phone;
 		this.email = email;
 		this.roles = roles;
+		this.permissions = permissions;
 	}
 
 	public String getAccessToken() {
@@ -108,4 +110,12 @@ public class JwtResponse {
 		this.roles = roles;
 	}
 
+	public List<String> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(List<String> permissions) {
+		this.permissions = permissions;
+	}
+	
 }

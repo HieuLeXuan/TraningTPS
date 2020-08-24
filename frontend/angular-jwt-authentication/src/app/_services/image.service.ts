@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:9000/';
+const API_URL = 'http://localhost:8090/';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -39,9 +39,5 @@ export class ImageService {
 
   deleteImage(id: string): Observable<any> {
     return this.http.delete(`${API_URL}` + `images/${id}`, { responseType: 'text' });
-  }
-
-  downloadImage(id: string): Observable<any> {
-    return this.http.get(`${API_URL}` + `images/${id}`, httpOptions); 
   }
 }

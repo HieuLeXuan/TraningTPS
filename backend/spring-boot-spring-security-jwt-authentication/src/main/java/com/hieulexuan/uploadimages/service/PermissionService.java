@@ -22,6 +22,10 @@ public class PermissionService {
 	public Stream<Permission> getAllPermissions() {
 		return permissionRepository.findAll().stream();
 	}
+	
+//	public Stream<Permission> getPermissions(Long userid) {
+//		return permissionRepository.findById(userid).stream();
+//	}
 
 	public Optional<Permission> findById(Long permissionid) {
 		return permissionRepository.findById(permissionid);

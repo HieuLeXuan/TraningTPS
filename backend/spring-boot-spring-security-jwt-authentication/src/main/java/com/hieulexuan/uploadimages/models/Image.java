@@ -1,7 +1,15 @@
 package com.hieulexuan.uploadimages.models;
 
 import java.util.Date;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
@@ -13,8 +21,8 @@ public class Image {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name="id", length=36)
-	@Length(min=36, max=36)
+	@Column(name = "id", length = 36)
+	@Length(min = 36, max = 36)
 	private String id;
 
 	@Lob

@@ -23,6 +23,8 @@ public class UserDetailsImpl implements UserDetails {
 	private String password;
 
 	private Collection<? extends GrantedAuthority> authorities;
+	
+	private Collection<? extends GrantedAuthority> authorities2;
 
 	private String firstname;
 	private String lastname;
@@ -30,14 +32,16 @@ public class UserDetailsImpl implements UserDetails {
 	private String location;
 
 	public UserDetailsImpl(Long id, String username, String email, String password,
-			Collection<? extends GrantedAuthority> authorities, String firstname, String lastname, String phone,
-			String location) {
+			Collection<? extends GrantedAuthority> authorities, 
+			Collection<? extends GrantedAuthority> authorities2,
+			String firstname, String lastname, String phone, String location) {
 
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.authorities = authorities;
+		this.authorities2 = authorities2;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.phone = phone;
@@ -48,13 +52,20 @@ public class UserDetailsImpl implements UserDetails {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
 
+		List<GrantedAuthority> authorities2 = user.getPermissions().stream()
+				.map(permission -> new SimpleGrantedAuthority(permission.getName())).collect(Collectors.toList());
+
 		return new UserDetailsImpl(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), authorities,
-				user.getFirstname(), user.getLastname(), user.getPhone(), user.getLocation());
+				authorities2, user.getFirstname(), user.getLastname(), user.getPhone(), user.getLocation());
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
+	}
+
+	public Collection<? extends GrantedAuthority> getAuthorities2() {
+		return authorities2;
 	}
 
 	public Long getId() {
@@ -120,4 +131,5 @@ public class UserDetailsImpl implements UserDetails {
 	public String getLocation() {
 		return location;
 	}
+	
 }

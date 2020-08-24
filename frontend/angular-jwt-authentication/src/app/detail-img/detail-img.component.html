@@ -7,10 +7,9 @@
       <h2>{{ image.description }}</h2>
       <p>Type: {{ image.type }}</p>
       <p>Size: {{ image.size }}</p>
-      <div>
-        <a class="btn btn-secondary" href="{{image.url}}" role="button" (click)="downloadImage()"><i class="fas fa-download fa-3x" style="font-size: small;"></i>
+      <div *ngIf="currentUser.permissions[0] == 'images_download' || currentUser.permissions[1] == 'images_download' || currentUser.permissions[2] == 'images_download'">
+        <a class="btn btn-secondary" href="{{image.url}}" role="button"><i class="fas fa-download fa-3x" style="font-size: small;"></i>
           Download</a>
-
         <!-- <button type="button" class="btn btn-secondary" (click)="downloadImage()"><i class="fas fa-download fa-3x" style="font-size: small;"></i>
           Download</button> -->
       </div>

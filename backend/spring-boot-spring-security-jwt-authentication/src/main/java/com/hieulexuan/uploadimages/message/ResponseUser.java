@@ -2,6 +2,7 @@ package com.hieulexuan.uploadimages.message;
 
 import java.util.Set;
 
+import com.hieulexuan.uploadimages.models.Permission;
 import com.hieulexuan.uploadimages.models.Role;
 
 public class ResponseUser {
@@ -13,7 +14,6 @@ public class ResponseUser {
 	private String email;
 	private String location;
 	private String phone;
-
 	private Set<Role> roles;
 
 	public ResponseUser() {

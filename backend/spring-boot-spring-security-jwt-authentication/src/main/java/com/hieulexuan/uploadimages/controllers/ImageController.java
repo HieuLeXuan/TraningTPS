@@ -50,7 +50,6 @@ public class ImageController {
 		return ResponseEntity.status(HttpStatus.OK).body(images);
 	}
 
-	@PreAuthorize("(hasRole('USER') or hasRole('ADMIN')) and hasPermission('images', 'download')")
 	@GetMapping("/images/{id}")
 	public ResponseEntity<Resource> getFile(@PathVariable String id) {
 		Image image = imageService.getFile(id);
