@@ -21,7 +21,7 @@ public class UserService {
 	@Autowired(required = false)
 	PasswordEncoder encoder;
 
-	public User updateUser(User user, String username) throws IOException {
+	public void updateUser(User user, String username) throws IOException {
 
 		User currentUser = userRepository.findByUsername(username)
 				.orElseThrow(() -> new UserNotFoundException(username));
@@ -33,14 +33,14 @@ public class UserService {
 		currentUser.setPhone(user.getPhone());
 		currentUser.setLocation(user.getLocation());
 
-		return userRepository.save(currentUser);
+		userRepository.save(currentUser);
 	}
 
 	public Stream<User> getAllUsers() {
 		return userRepository.findAll().stream();
 	}
 	
-	public void deleteUser(Long id) throws IOException {
+	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
 	}
 	

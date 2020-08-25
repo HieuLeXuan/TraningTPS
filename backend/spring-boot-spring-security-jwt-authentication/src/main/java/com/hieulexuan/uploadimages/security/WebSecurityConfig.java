@@ -72,7 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers("/login/**").permitAll()
-				.antMatchers("/images").permitAll() 	// see images, upload images
+				.antMatchers("/images").permitAll() 		// see images, upload images
 				.antMatchers("/images/**").permitAll()	// download image
 				.antMatchers("/users").hasAnyRole("ADMIN", "USER")
 				.anyRequest().authenticated();
