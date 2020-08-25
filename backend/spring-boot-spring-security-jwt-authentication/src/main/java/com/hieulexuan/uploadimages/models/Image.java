@@ -32,7 +32,6 @@ public class Image {
 	private String type;
 	private String description;
 	private Date createDate;
-//	private String path;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -50,7 +49,6 @@ public class Image {
 		this.data = data;
 		this.description = descrition;
 		this.createDate = createDate;
-//		this.path = path;
 		this.user = user;
 	}
 
@@ -101,14 +99,6 @@ public class Image {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-//	public String getPath() {
-//		return path;
-//	}
-//
-//	public void setPath(String path) {
-//		this.path = path;
-//	}
 
 	public User getUser() {
 		return user;
