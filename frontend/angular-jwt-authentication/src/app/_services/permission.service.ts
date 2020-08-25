@@ -4,11 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User_Permission } from '../model/user_permission';
 
-<<<<<<< HEAD
 const API_URL = 'http://localhost:8081/';
-=======
-const API_URL = 'http://localhost:9000/';
->>>>>>> 4be51f46f42640d051eceff380e94ed354062e41
 
 @Injectable({
   providedIn: 'root'
