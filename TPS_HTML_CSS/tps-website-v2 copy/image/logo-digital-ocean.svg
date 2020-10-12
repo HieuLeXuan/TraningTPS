@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="345" height="207" viewBox="0 0 345 207">
+  <g id="logo-digital-ocean" transform="translate(-225 -1900)">
+    <rect id="Rectangle_4098" data-name="Rectangle 4098" width="345" height="207" transform="translate(225 1900)" fill="#fff"/>
+    <g id="digitalocean-icon-1" transform="translate(332.632 1939.463)">
+      <path id="Path_9723" data-name="Path 9723" d="M64.286,128.776V103.849c26.385,0,46.867-26.166,36.735-53.937A37.253,37.253,0,0,0,78.792,27.681C51.021,17.623,24.855,38.03,24.855,64.415H0C0,22.363,40.672-10.437,84.768,3.336a62.25,62.25,0,0,1,40.6,40.6c13.776,44.166-18.952,84.838-61.082,84.838" transform="translate(0 0)" fill="#0080ff" fill-rule="evenodd"/>
+      <path id="Path_9724" data-name="Path 9724" d="M36.811,55.543h24.78V30.763H36.814Zm-19.1,19.1H36.808V55.546H17.715ZM1.751,55.546H17.715V39.58H1.751Z" transform="translate(2.767 48.378)" fill="#0080ff" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88" height="88" viewBox="0 0 88 88">
+  <defs>
+    <linearGradient id="linear-gradient" x2="1.031" y2="1.038" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#087be2"/>
+      <stop offset="1" stop-color="#0c0f60"/>
+    </linearGradient>
+  </defs>
+  <g id="tech-struts" transform="translate(-660 -3657)">
+    <path id="Path_379" data-name="Path 379" d="M44,0A44,44,0,1,1,0,44,44,44,0,0,1,44,0Z" transform="translate(660 3657)" fill="rgba(0,29,255,0)"/>
+    <g id="Group_4706" data-name="Group 4706" transform="translate(436.807 3069.271)">
+      <path id="Path_416" data-name="Path 416" d="M242.549,746.693c.313-1.713.617-3.426.943-5.136.125-.658.3-1.306.474-2.044l8.473,2.18-.631,8.89h-9.259Z" transform="translate(0 -101.861)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+      <path id="Path_417" data-name="Path 417" d="M458.033,750.452c-.1-1.317-.194-2.634-.315-3.949-.144-1.556-.314-3.109-.484-4.767l8.726-2.383c.389,2.33.779,4.559,1.125,6.795.173,1.12.264,2.252.392,3.378v.926Z" transform="translate(-174.929 -101.731)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+      <path id="Path_418" data-name="Path 418" d="M351.058,622.616c-2.307,0-4.51.015-6.712-.022a.967.967,0,0,1-.694-.485c-.981-2.117-1.919-4.253-2.908-6.469a20.381,20.381,0,0,1,13.419-.007Z" transform="translate(-80.01)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+      <path id="Path_419" data-name="Path 419" d="M440.272,684.62l7.884-3.937,3.172,7.873-8.373,3.132Z" transform="translate(-161.108 -53.926)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+      <path id="Path_420" data-name="Path 420" d="M262.849,691.315l-8.434-2.747,3.1-7.888,7.9,3.937Z" transform="translate(-9.669 -53.923)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+      <path id="Path_421" data-name="Path 421" d="M417.873,635.644l-6.313,5.024-5.422-5.143,5.357-6.142A27.265,27.265,0,0,1,417.873,635.644Z" transform="translate(-133.296 -12.126)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+      <path id="Path_422" data-name="Path 422" d="M291.681,629.32l5.362,6.151-5.311,5.136-6.345-4.961A26.413,26.413,0,0,1,291.681,629.32Z" transform="translate(-34.905 -12.074)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

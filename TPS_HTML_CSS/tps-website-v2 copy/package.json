@@ -1,0 +1,19 @@
+{
+  "name": "tps-website-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://giangtrungnguyen@bitbucket.org/giangtrungnguyen/tps-website-v2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/giangtrungnguyen/tps-website-v2#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.0"
+  }
+}

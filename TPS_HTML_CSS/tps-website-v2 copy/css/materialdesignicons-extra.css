@@ -1,0 +1,13 @@
+/* MaterialDesignIcons.com */
+@font-face {
+  font-family: "Material Design Icons Extra";
+  src: url("../fonts/materialdesignicons-extra-webfont.eot?v=5.3.45");
+  src: url("../fonts/materialdesignicons-extra-webfont.eot?#iefix&v=5.3.45") format("embedded-opentype"), url("../fonts/materialdesignicons-extra-webfont.woff2?v=5.3.45") format("woff2"), url("../fonts/materialdesignicons-extra-webfont.woff?v=5.3.45") format("woff"), url("../fonts/materialdesignicons-extra-webfont.ttf?v=5.3.45") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mdi-extra-long-arrow-right::before {
+  font-family: "Material Design Icons Extra";
+  content: "\e000";
+}

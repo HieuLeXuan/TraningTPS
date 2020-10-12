@@ -1,0 +1,55 @@
+.section.section-contact-form {
+	.section-header {
+		.section-subtitle {
+			font-weight: 400;
+			> strong {
+				font-weight: bold;
+			}
+		}
+		.section-description {
+			font-size: 1.125rem;
+		}
+	}
+	.container-xl {
+		background: #FFFFFF 0% 0% no-repeat padding-box;
+		@media (min-width: $breakpoint-xl) {
+			box-shadow: 0px 10px 30px #00000014;
+			border-radius: 10px;
+			margin-top: -5rem;
+		}
+		@media (min-width: $breakpoint-xxl) {
+			margin-top: -6rem;
+		}
+	}
+	.form-contact {
+		.form-group {
+			// outline: solid 1px red;
+			input.form-control {
+				height: 58px;
+				padding: 1rem;
+			}
+			.custom-file {
+				height: 58px;
+				.custom-file-label {
+					height: 58px;
+					padding: 1rem;
+					background: none;
+					border-color: transparent;
+					&:after {
+						// height: 56px;
+						padding: 0.5rem 1rem;
+
+						height: 40px;
+						margin-top: 8px;
+						margin-bottom: 8px;
+						margin-right: 8px;
+						background: #ffffff;
+						box-shadow: 0px 3px 6px #00000029;
+						border-radius: 20px;
+					}
+				}
+			}
+
+		}
+	}
+}
