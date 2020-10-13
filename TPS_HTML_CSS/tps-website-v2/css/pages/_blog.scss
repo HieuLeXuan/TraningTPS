@@ -1,0 +1,186 @@
+.section.section-blog-category-filter,
+.section-blog-content .sidebar-blog-category-filter {
+	padding-bottom: 0;
+	// .section-header {
+	// 	.section-subtitle {
+	// 		font-weight: 400;
+	// 		> strong {
+	// 			font-weight: bold;
+	// 		}
+	// 	}
+	// 	.section-description {
+	// 		font-size: 1.125rem;
+	// 	}
+	// }
+	// .container-xl {
+	// 	background: #FFFFFF 0% 0% no-repeat padding-box;
+	// 	@media (min-width: $breakpoint-xl) {
+	// 		box-shadow: 0px 10px 30px #00000014;
+	// 		border-radius: 10px;
+	// 		margin-top: -7rem;
+	// 	}
+	// }
+	.section-header {
+		&:after {
+			display: block;
+			content: '';
+			border-top: 2px solid rgba(238, 72, 34, 1);
+			margin-top: -30px;
+		}
+		.section-title {
+			font-size: 1.125rem;
+			text-align: left;
+			font-weight: 600;
+			padding: 1.25rem;
+			color: $color-white;
+			background-color: $color-highlight;
+			display: inline-block;
+			width: auto;
+			border-radius: 4px;
+			margin: 0;
+			@media (min-width: $breakpoint-md) {
+				font-size: 1.125rem;
+			}
+			@media (min-width: $breakpoint-xxl) {
+				font-size: 1.125rem;
+				line-height: 1;
+			}
+		}
+	}
+	.btn-category {
+		position: relative;
+		display: block;
+		.overlay {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: $color-white;
+			&.bg-purple {
+				background: transparent linear-gradient(124deg, rgba(247, 55, 255, 1) 0%, rgba(52, 44, 255, 0.75) 100%) 0% 0% no-repeat padding-box;
+			}
+			&.bg-orange {
+				background: transparent linear-gradient(124deg, rgba(238, 72, 34, 1) 0%, rgba(255, 189, 35, 0.75) 100%) 0% 0% no-repeat padding-box;
+			}
+			&.bg-blue {
+				background: transparent linear-gradient(124deg, rgba(55, 115, 255, 1) 0%, rgba(44, 255, 176, 0.75) 100%) 0% 0% no-repeat padding-box;
+			}
+		}
+	}
+}
+.section.section-blog-list,
+.section-blog-content .sidebar-blog-list {
+	.section-header {
+		&:after {
+			display: block;
+			content: '';
+			border-top: 2px solid rgba(238, 72, 34, 1);
+			margin-top: -30px;
+		}
+		.section-title {
+			font-size: 1.125rem;
+			text-align: left;
+			font-weight: 600;
+			padding: 1.25rem;
+			color: $color-white;
+			background-color: $color-highlight;
+			display: inline-block;
+			width: auto;
+			border-radius: 4px;
+			margin: 0;
+			@media (min-width: $breakpoint-md) {
+				font-size: 1.125rem;
+			}
+			@media (min-width: $breakpoint-xxl) {
+				font-size: 1.125rem;
+				line-height: 1;
+			}
+		}
+	}
+}
+.section.section-featured-image {
+	background: $color-primary url(../image/bg-tagline.svg) center center no-repeat;
+	background-size: cover;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+	@media (min-width: $breakpoint-xxl) {
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+	h1 {
+		color: $color-white;
+		letter-spacing: 2px;
+		font-weight: bold;
+		font-size: 1.5rem;
+		> span {
+			font-size: 3.5rem;
+			color: $color-highlight-inverse;
+		}
+	}
+	
+}
+
+
+.section-blog-content {
+	article {
+		.article-title {
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: $color-primary;
+			@media (min-width: $breakpoint-sm) {
+				font-size: 2rem;
+			}
+			@media (min-width: $breakpoint-xxl) {
+				font-size: 3rem;
+			}
+		}
+		.article-meta {
+			font-size: 1.125rem;
+			@media (min-width: $breakpoint-sm) {
+				font-size: 1.125rem;
+			}
+		}
+	}
+	.share-action {
+		.btn-facebook {
+			background-color: #38559c;
+			border-color: darken(#38559c, 5%);
+		}
+		.btn-twitter {
+			background-color: #00aaf3;
+			border-color: darken(#00aaf3, 5%);
+		}
+		.btn-google {
+			background-color: #e14929;
+			border-color: darken(#e14929, 5%);
+		}
+		.btn-pinterest {
+			background-color: #cb1f20;
+			border-color: darken(#cb1f20, 5%);
+		}
+	}
+
+	.nav-action {
+		a {
+			color: $color-black;
+			&:hover, &:active, &:focus {
+				color: $color-highlight;
+			}
+			h6 {
+				font-size: 0.875rem;
+				font-weight: 600;
+			}
+			p {
+				font-size: 1.25rem;
+				font-weight: 600;
+			}
+		}
+	}
+
+}
