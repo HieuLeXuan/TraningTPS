@@ -1,0 +1,173 @@
+.section.section-tagline-career {
+	position: relative;
+	.section-action {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1.5rem;
+		margin: 0;
+	}
+}
+.section-you-are {
+	.card.card-you-are {
+		border-radius: 0.75rem;
+		overflow: hidden;
+		&.bg-fresher {
+			background: url(../image/bg-fresher.svg) no-repeat;
+			background-size: cover;
+		}
+		&.bg-senior {
+			background: url(../image/bg-senior.svg) no-repeat;
+			background-size: cover;
+		}
+		&.bg-expert {
+			background: url(../image/bg-expert.svg) no-repeat;
+			background-size: cover;
+		}
+		> img {
+			width: 100%;
+		}
+		.card-body {
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+			.card-title {
+				font-size: 1.25rem;
+				font-weight: 600;
+			}
+			p {
+				font-size: 1rem;
+			}
+			@media (min-width: $breakpoint-xxl) {
+				.card-title {
+					font-size: 1.5rem;
+				}
+				p {
+					font-size: 1.125rem;
+				}
+			}
+
+		}
+		.card-footer {
+			border-bottom-left-radius: 0.75rem;
+			border-bottom-right-radius: 0.75rem;
+			a:hover,
+			a:focus {
+				color: $color-highlight;
+			}
+		}
+	}
+}
+.section.section-working-place {
+	background: url(../image/bg-research-development.png) no-repeat;
+	background-position: fixed;
+	background-size: cover;
+	.card.card-working-place {
+		border-radius: 0.75rem;
+		> img {
+			// width: 200px;
+			// height: 200px;
+			// border-radius: 50%;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 2rem;
+		}
+		.card-body {
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+			.card-title {
+				font-size: 1rem;
+				font-weight: 600;
+				color: $color-primary;
+				@media (min-width: $breakpoint-xxl) {
+					font-size: 1.25rem;
+				}
+			}
+			p {
+				font-size: 0.875rem;
+				@media (min-width: $breakpoint-xxl) {
+					font-size: 1rem;
+				}
+			}
+
+		}
+		.card-footer {
+			border-bottom-left-radius: 0.75rem;
+			border-bottom-right-radius: 0.75rem;
+			a:hover,
+			a:focus {
+				color: $color-highlight;
+			}
+		}
+	}
+}
+.section.section-team-spirit {
+	.media.media-team-spirit {
+		border-radius: 0;
+		transition: all 0.3s ease;
+		margin-bottom: 4rem;
+		> img {
+			width: 80%;
+			@media (min-width: $breakpoint-sm) {
+				width: 30%;
+			}
+		}
+		.media-body {
+			padding: 1rem 1rem 1rem 0;
+			h5 {
+				font-size: 1.125rem;
+				color: $color-primary;
+				font-weight: 600;
+				@media (min-width: $breakpoint-xl) {
+					font-size: 1.25rem;
+				}
+			}
+			p {
+				margin: 0;
+				@media (min-width: $breakpoint-xl) {
+					font-size: 1.125rem;
+				}
+			}
+		}
+	}
+}
+
+.section.section-jobs {
+	.card.card-job {
+		border-radius: 0.75rem;
+		position: relative;
+		> .badge-urgent {
+			position: absolute;
+			top: 10px;
+			left: -6px;
+
+		}
+		> img {
+			border-top-left-radius: 0.75rem;
+			border-top-right-radius: 0.75rem;
+		}
+		.card-body {
+			@media (min-width: $breakpoint-xxl) {
+				padding: 2rem;
+			}
+			.card-title {
+				font-size: 1rem;
+				font-weight: 600;
+				color: $color-primary;
+			}
+			p {
+				font-size: 0.875rem;
+			}
+
+		}
+		.card-footer {
+			border-bottom-left-radius: 0.75rem;
+			border-bottom-right-radius: 0.75rem;
+			a:hover,
+			a:focus {
+				color: $color-highlight;
+			}
+		}
+	}
+}
+
+
