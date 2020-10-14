@@ -123,6 +123,13 @@ p {
     }
 
     /* section 5 */
+
+    .text-header-blog {
+        font-family: Georgia;
+        color: #0C3653;
+        font-size: 36px;
+    }
+
     .middle {
         transition: .5s ease;
         opacity: 0;
@@ -179,7 +186,7 @@ p {
         right: 0;
         position: absolute;
         height: none;
-        top: 20px;
+        top: 30px;
     }
 
     .image2 {
@@ -208,6 +215,13 @@ p {
     }
 
     /* section 5 */
+
+    .text-header-blog {
+        font-family: Georgia;
+        color: #0C3653;
+        font-size: 36px;
+    }
+
     .middle {
         transition: .5s ease;
         opacity: 0;
