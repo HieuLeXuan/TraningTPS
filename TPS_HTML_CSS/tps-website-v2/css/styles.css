@@ -72,7 +72,7 @@
     #middle-bottom {
         position: absolute;
         right: -0.55%;
-        bottom: 18%;
+        bottom: 19%;
         border-radius: 7px;
     }
 }
@@ -155,12 +155,13 @@
 
     .p-header {
         font-size: 10px;
+        margin-bottom: 100px;
     }
 
     #middle-bottom {
         position: absolute;
         right: -0.55%;
-        bottom: 18%;
+        bottom: 22%;
         border-radius: 5px;
     }
 }
@@ -196,7 +197,7 @@
         right: 0;
         position: absolute;
         height: none;
-        top: 23px;
+        top: 20px;
     }
 
     .image2 {
@@ -263,13 +264,14 @@
     }
 
     .p-header {
-        font-size: 14px;
+        font-size: 10px;
+        margin-bottom: 100px;
     }
 
     #middle-bottom {
         position: absolute;
         right: -0.55%;
-        bottom: 18%;
+        bottom: 20%;
         border-radius: 5px;
     }
 }
