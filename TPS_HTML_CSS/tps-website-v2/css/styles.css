@@ -176,8 +176,12 @@
         margin-left: 150px;
     }
 
-    .section-header-custom {
-        top: 110px;
+    .section-header-custom1 {
+        top: 130px;
+    }
+
+    .section-header-custom2 {
+        top: 45px;
     }
 
     /* section 2 */
@@ -192,7 +196,7 @@
         right: 0;
         position: absolute;
         height: none;
-        top: 30px;
+        top: 23px;
     }
 
     .image2 {
