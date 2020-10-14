@@ -1,5 +1,5 @@
 /* Small devices (tablets, 568px and up) */
-@media (min-width: 576px) and (max-width: 767px) { 
+@media (min-width: 375px) and (max-width: 768px) { 
     #header {
         top: 0px;
     }
@@ -20,17 +20,31 @@
         margin-bottom: 80px;
     }
 
+    .text-header-dark {
+        font-weight: bold;
+        font-family: Georgia, Times, "Times New Roman", serif;
+        color: #0c3653;
+    }
+
     .width-image {
         width: 100%;
         margin-bottom: 20px;
     }
 
+    .div1 {
+        /* padding: 0px; */
+    }
+
+    .div2 {
+        /* padding: 0px; */
+    }
+
     .image3 {
-        width: 103%;
+        width: 100%;
     }
 
     .image4 {
-        width: 103%;
+        width: 100%;
     }
 
     /* section 3 */
@@ -43,6 +57,13 @@
     .price-product {
         font-family: Georgia;
         color: #F98169;
+    }
+
+    /* section 4 */
+    .text-header-4 {
+        font-weight: bold;
+        font-family: Georgia, Times, "Times New Roman", serif;
+        color: #0C3653;
     }
 
     /* section 5 */
@@ -94,21 +115,25 @@
 
     /* section 2 */
 
+    .div-why-us {
+        margin-bottom: 80px;
+    }
+
     .image1 {
         width: 100%;
-        height: 50%;
-        margin-bottom: 5px;
+        height: 49%;
+        margin-bottom: 25px;
     }
 
     .image2 {
         width: 100%;
-        height: 48.5%;
+        height: 46%;
         margin-bottom: 5px;
     }
 
     .image3 {
         width: 100%;
-        margin-bottom: 5px;
+        margin-bottom: 25px;
     }
 
     .image4 {
@@ -126,6 +151,13 @@
         font-family: Georgia;
         color: #F98169;
         margin-left: 30px;
+    }
+
+    /* section 4 */
+    .text-header-4 {
+        font-family: Georgia, Times, "Times New Roman", serif;
+        color: #0c3653;
+        font-weight: bold;
     }
 
     /* section 5 */
@@ -178,14 +210,21 @@
     }
 
     .section-header-custom1 {
-        top: 130px;
+        padding-top: 160px !important;
+        font-family: Georgia, Times, "Times New Roman", serif;
+        color: #0c3653;
     }
 
     .section-header-custom2 {
-        top: 45px;
+        font-family: Georgia, Times, "Times New Roman", serif;
+        color: #0c3653;
     }
 
     /* section 2 */
+
+    .image-header-2 {
+        bottom: 30px;
+    }
 
     .div1 {
         top: 30px;
@@ -197,7 +236,6 @@
         right: 0;
         position: absolute;
         height: none;
-        top: 20px;
     }
 
     .image2 {
@@ -210,7 +248,6 @@
     .div2 {
         top: -60px;
         position: relative;
-        left: 15px;
     }
 
     .image3 {
@@ -236,6 +273,13 @@
         font-family: Georgia;
         color: #F98169;
         margin-left: 30px;
+    }
+
+    /* section 4 */
+    .text-header-4 {
+        font-family: Georgia, Times, "Times New Roman", serif;
+        color: #0c3653;
+        font-weight: bold;
     }
 
     /* section 5 */
@@ -311,10 +355,6 @@ p {
 }
 
 /* section 2  */
-.text-header-dark {
-    font-size: 36px;
-    color: #0C3653;
-}
 
 .text-p-dark {
     font-size: 16px;
