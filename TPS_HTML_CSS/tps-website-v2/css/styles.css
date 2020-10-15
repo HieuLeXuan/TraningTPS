@@ -236,6 +236,7 @@
         right: 0;
         position: absolute;
         height: none;
+        top: 5px;
     }
 
     .image2 {
@@ -246,7 +247,7 @@
     }
 
     .div2 {
-        top: -60px;
+        top: -110px;
         position: relative;
     }
 
@@ -333,6 +334,10 @@ p {
 
 .text-left {
     color: #255A7E;
+}
+
+.text-header-1 {
+    margin-top: 60px;;
 }
 
 .btn {
