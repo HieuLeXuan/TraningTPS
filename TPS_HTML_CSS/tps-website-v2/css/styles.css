@@ -236,18 +236,18 @@
         right: 0;
         position: absolute;
         height: none;
-        top: 5px;
+        top: -50px;
     }
 
     .image2 {
         position: absolute;
-        bottom: -35px;
+        bottom: 20px;
         right: 0px;
         width: 100%;
     }
 
     .div2 {
-        top: -110px;
+        top: -155px;
         position: relative;
     }
 
