@@ -12052,7 +12052,7 @@ header .navbar.navbar-light .navbar-nav.language .active > .nav-link {
     box-shadow: none; }
 
 .section-why-us {
-  background: url("../image/img/bg-body.png") no-repeat center; }
+  background: url("../image/img/bg-body.png") no-repeat center; 
   background-position: fixed;
   background-size: cover; }
 
