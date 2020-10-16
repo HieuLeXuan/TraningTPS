@@ -11041,7 +11041,7 @@ a.text-dark:hover, a.text-dark:focus {
   background-size: cover;
   height: 800px; }
   .section-hero .container-xl {
-    position: absolute;
+    /* position: absolute; */
     top: 20px;
     padding: 0 70px; }
     .section-hero .container-xl .txt-victorya {
